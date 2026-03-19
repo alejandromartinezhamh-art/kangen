@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El agua que bebes en el Maresme — ¿sabes realmente lo que contiene?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            agua: {
+              50:  '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+
+    .hero-bg {
+      background: linear-gradient(135deg, #0c4a6e 0%, #075985 45%, #0369a1 100%);
+    }
+
+    .card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.1);
+    }
+
+    .cta-btn {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      transition: all 0.2s ease;
+    }
+    .cta-btn:hover {
+      background: linear-gradient(135deg, #0284c7, #075985);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(14, 165, 233, 0.4);
+    }
+
+    .wa-btn {
+      background: #25D366;
+      transition: all 0.2s ease;
+    }
+    .wa-btn:hover {
+      background: #1ebe5d;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+    }
+
+    .problem-bg {
+      background: linear-gradient(135deg, #1e3a5f 0%, #0c4a6e 100%);
+    }
+
+    .tag {
+      background: rgba(14, 165, 233, 0.12);
+      color: #0284c7;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero-bg text-white pt-20 pb-0">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+
+      <p class="text-agua-300 text-sm font-semibold uppercase tracking-widest mb-5">Somos vecinos del Maresme</p>
+
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+        ¿Sabes de verdad<br class="hidden md:block" /> lo que bebes?
+      </h1>
+
+      <p class="text-agua-100 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+        El agua del grifo en el Maresme llega a casa con cloro, metales pesados y un pH que no favorece tu cuerpo.
+        Somos Alejandro y Gemma, vivimos en Tiana, y llevamos un tiempo usando una solución que cambia
+        la calidad del agua que bebemos cada día. Aquí te la explicamos.
+      </p>
+
+      <a href="#contacto" class="cta-btn inline-block text-white font-semibold text-lg px-10 py-4 rounded-full shadow-lg">
+        Habla con nosotros
+      </a>
+      <p class="text-agua-300 text-sm mt-4 mb-16">Sin compromiso. Solo una conversación entre vecinos.</p>
+    </div>
+
+    <svg class="block w-full overflow-hidden" style="margin-bottom:-2px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 70">
+      <path fill="#ffffff" d="M0,35 C360,70 1080,0 1440,35 L1440,70 L0,70 Z"></path>
+    </svg>
+  </section>
+
+
+  <!-- ===================== EL PROBLEMA ===================== -->
+  <section class="py-20 px-6 bg-white">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-agua-900 mb-4">
+          El agua del Maresme tiene un problema
+        </h2>
+        <p class="text-gray-500 text-lg leading-relaxed">
+          No es que sea peligrosa. Es legal, cumple normativas. Pero eso no significa que sea buena para tu cuerpo.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+
+        <div class="card bg-red-50 border border-red-100 rounded-2xl p-6 text-center">
+          <div class="text-4xl font-black text-red-400 mb-2">Cl</div>
+          <h3 class="font-bold text-gray-800 mb-2">Cloro residual</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Se añade para desinfectar, pero llega a tu vaso. Altera el sabor, el olor y la flora intestinal.
+          </p>
+        </div>
+
+        <div class="card bg-amber-50 border border-amber-100 rounded-2xl p-6 text-center">
+          <div class="text-4xl font-black text-amber-400 mb-2">Ca+</div>
+          <h3 class="font-bold text-gray-800 mb-2">Agua muy dura</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Alta concentración de calcio y magnesio. Se nota en las tuberías, las teteras y también en el cuerpo.
+          </p>
+        </div>
+
+        <div class="card bg-orange-50 border border-orange-100 rounded-2xl p-6 text-center">
+          <div class="text-4xl font-black text-orange-400 mb-2">pH</div>
+          <h3 class="font-bold text-gray-800 mb-2">pH desequilibrado</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            El agua de red suele ser ligeramente ácida o neutra. El cuerpo humano necesita un entorno ligeramente alcalino para funcionar bien.
+          </p>
+        </div>
+
+      </div>
+
+      <p class="text-center text-gray-400 text-sm">
+        La solución de muchos es comprar agua embotellada. Es cara, genera plástico y no es tan buena como parece.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ===================== OSMOSIS NO ===================== -->
+  <section class="py-20 px-6 bg-agua-50">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-agua-900 mb-4">
+          La ósmosis no es la respuesta
+        </h2>
+        <p class="text-gray-500 text-lg leading-relaxed">
+          Muchos dan el salto a la ósmosis inversa pensando que han resuelto el problema. Pero tiene una trampa grande.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-agua-100 p-8 shadow-sm mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          <div>
+            <p class="tag mb-3">Osmosis inversa</p>
+            <ul class="space-y-3 text-sm text-gray-600">
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 font-bold mt-0.5">✗</span>
+                Elimina el cloro — bien
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 font-bold mt-0.5">✗</span>
+                Pero también elimina todos los minerales esenciales: calcio, magnesio, potasio
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 font-bold mt-0.5">✗</span>
+                El resultado es agua "muerta" — limpia de todo, incluido lo bueno
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 font-bold mt-0.5">✗</span>
+                pH muy bajo (ácido), que puede desmineralizar el organismo con el tiempo
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 font-bold mt-0.5">✗</span>
+                Genera mucha agua de desecho durante el proceso
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="tag mb-3">Ionización alcalina</p>
+            <ul class="space-y-3 text-sm text-gray-600">
+              <li class="flex items-start gap-2">
+                <span class="text-green-500 font-bold mt-0.5">✓</span>
+                Filtra el cloro, sedimentos y sustancias nocivas
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500 font-bold mt-0.5">✓</span>
+                Conserva los minerales naturales del agua
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500 font-bold mt-0.5">✓</span>
+                Eleva el pH a niveles alcalinos (8.5–9.5) favorables para el cuerpo
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500 font-bold mt-0.5">✓</span>
+                Genera hidrógeno molecular (H2), uno de los antioxidantes más potentes que existen
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500 font-bold mt-0.5">✓</span>
+                Agua ilimitada directamente del grifo, sin plásticos
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <p class="text-center text-gray-500 text-sm leading-relaxed max-w-xl mx-auto">
+        El proceso se llama electrólisis. El agua pasa por placas de titanio y platino que separan las partículas ácidas de las alcalinas.
+        El resultado es agua limpia, rica en minerales y cargada de hidrógeno molecular.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ===================== BENEFICIOS ===================== -->
+  <section class="py-20 px-6 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-agua-900 text-center mb-4">
+        Lo que nota tu cuerpo
+      </h2>
+      <p class="text-center text-gray-500 mb-14 text-lg">Lo que reportan las personas que llevan meses bebiendo agua alcalina ionizada.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <div class="card bg-agua-50 rounded-2xl p-7 border border-agua-100">
+          <h3 class="text-base font-bold text-agua-900 mb-2">Mejor hidratación</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Las moléculas de agua ionizada penetran mejor en las células. Bebes menos cantidad y te hidratas más.
+            Muchos atletas lo notan especialmente en la recuperación post-entreno.
+          </p>
+        </div>
+
+        <div class="card bg-agua-50 rounded-2xl p-7 border border-agua-100">
+          <h3 class="text-base font-bold text-agua-900 mb-2">Antioxidante natural</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            El hidrógeno molecular (H2) es uno de los antioxidantes más estudiados. Ayuda a neutralizar
+            radicales libres y a reducir el estrés oxidativo — proceso vinculado al envejecimiento celular.
+          </p>
+        </div>
+
+        <div class="card bg-agua-50 rounded-2xl p-7 border border-agua-100">
+          <h3 class="text-base font-bold text-agua-900 mb-2">Equilibrio del pH</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            La dieta moderna tiende a acidificar el organismo. El agua alcalina ayuda a contrarrestar esa
+            acidez y a mantener un entorno interno más equilibrado.
+          </p>
+        </div>
+
+        <div class="card bg-agua-50 rounded-2xl p-7 border border-agua-100">
+          <h3 class="text-base font-bold text-agua-900 mb-2">Digestión y energía</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Muchas personas con problemas digestivos o de energía notan mejoras significativas en pocas semanas.
+            El agua que bebes afecta a todo el sistema digestivo.
+          </p>
+        </div>
+
+        <div class="card bg-agua-50 rounded-2xl p-7 border border-agua-100">
+          <h3 class="text-base font-bold text-agua-900 mb-2">Piel e hidratación externa</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            El dispositivo también produce agua para la ducha que elimina el cloro y mineraliza el agua.
+            La piel y el cabello lo notan — menos sequedad, menos irritación.
+          </p>
+        </div>
+
+        <div class="card bg-agua-50 rounded-2xl p-7 border border-agua-100">
+          <h3 class="text-base font-bold text-agua-900 mb-2">Una máquina, cinco aguas</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Agua para beber, para cocinar, para limpiar, para la piel y para desinfectar frutas y verduras.
+            Reemplaza muchos productos del hogar y elimina las garrafas de plástico para siempre.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== QUIÉNES SOMOS ===================== -->
+  <section class="py-20 px-6 bg-agua-50">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-bold text-agua-900 mb-4">Somos vecinos</h2>
+        <p class="text-gray-500 text-lg leading-relaxed max-w-2xl mx-auto">
+          Vivimos en Tiana. No somos vendedores — somos personas que descubrieron algo que nos cambió la forma de hidratarnos
+          y que nos pareció suficientemente bueno como para contárselo a los de aquí cerca.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+        <!-- ALEJANDRO -->
+        <div class="bg-white rounded-2xl p-8 text-center shadow-sm border border-agua-100">
+          <!--
+            FOTO ALEJANDRO:
+            Sustituye este bloque por:
+            <img src="URL_O_RUTA_DE_TU_FOTO" alt="Alejandro Martínez" class="w-36 h-36 rounded-full object-cover mx-auto mb-5" />
+          -->
+          <div class="w-36 h-36 rounded-full bg-agua-100 mx-auto mb-5 flex items-center justify-center">
+            <span class="text-agua-500 text-xs font-medium">Foto Alejandro</span>
+          </div>
+          <h3 class="text-xl font-bold text-agua-900 mb-1">Alejandro Martínez</h3>
+          <p class="text-agua-500 text-sm font-medium mb-4">Tiana, Maresme</p>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Empecé a informarme sobre el agua por un tema de salud personal. Probé el sistema de ionización con cierto
+            escepticismo — y la diferencia fue tan clara que no pude no compartirlo.
+            Si tienes dudas, hablamos sin más.
+          </p>
+        </div>
+
+        <!-- GEMMA -->
+        <div class="bg-white rounded-2xl p-8 text-center shadow-sm border border-agua-100">
+          <!--
+            FOTO GEMMA:
+            Sustituye este bloque por:
+            <img src="URL_O_RUTA_DE_TU_FOTO" alt="Gemma Oña" class="w-36 h-36 rounded-full object-cover mx-auto mb-5" />
+          -->
+          <div class="w-36 h-36 rounded-full bg-agua-100 mx-auto mb-5 flex items-center justify-center">
+            <span class="text-agua-500 text-xs font-medium">Foto Gemma</span>
+          </div>
+          <h3 class="text-xl font-bold text-agua-900 mb-1">Gemma Oña</h3>
+          <p class="text-agua-500 text-sm font-medium mb-4">Tiana, Maresme</p>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Siempre he prestado atención a la alimentación y los hábitos. El agua es la base de todo
+            y muchas veces la más descuidada. Desde que cambiamos la nuestra, no hemos vuelto atrás.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== CTA / CONTACTO ===================== -->
+  <section id="contacto" class="hero-bg text-white py-24 px-6">
+    <div class="max-w-2xl mx-auto text-center">
+
+      <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">
+        ¿Quieres saber más?<br />Te lo explicamos en persona.
+      </h2>
+
+      <p class="text-agua-100 text-lg leading-relaxed mb-12">
+        Sin presentaciones corporativas ni presión. Una conversación, con vecinos,
+        sobre el agua que bebes en el Maresme y si tiene sentido para ti hacer el cambio.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+
+        <!--
+          WHATSAPP ALEJANDRO:
+          Sustituye el 34600000000 por tu número real (sin espacios, con prefijo 34).
+          El texto después de ?text= es el mensaje predefinido que recibirás.
+        -->
+        <a
+          href="https://wa.me/34600000000?text=Hola%20Alejandro%2C%20he%20visto%20vuestra%20p%C3%A1gina%20sobre%20el%20agua%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s."
+          target="_blank"
+          class="wa-btn inline-flex items-center justify-center gap-3 text-white font-semibold text-lg px-8 py-4 rounded-full shadow-lg"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          WhatsApp Alejandro
+        </a>
+
+        <!--
+          WHATSAPP GEMMA:
+          Sustituye el 34611111111 por el número real de Gemma.
+        -->
+        <a
+          href="https://wa.me/34611111111?text=Hola%20Gemma%2C%20he%20visto%20vuestra%20p%C3%A1gina%20sobre%20el%20agua%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s."
+          target="_blank"
+          class="wa-btn inline-flex items-center justify-center gap-3 text-white font-semibold text-lg px-8 py-4 rounded-full shadow-lg"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          WhatsApp Gemma
+        </a>
+
+      </div>
+
+      <p class="text-agua-300 text-sm">
+        O llámanos directamente:
+        <!-- TELÉFONOS: sustituye los números -->
+        <span class="text-white font-semibold">Alejandro: +34 600 000 000</span>
+        &nbsp;·&nbsp;
+        <span class="text-white font-semibold">Gemma: +34 611 111 111</span>
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-agua-900 text-agua-400 py-8 px-6 text-center text-sm">
+    <p class="text-agua-300 font-medium">Alejandro Martínez &amp; Gemma Oña</p>
+    <p class="mt-1">Distribuidores independientes · Tiana, Maresme</p>
+  </footer>
+
+</body>
+</html>
