@@ -6,477 +6,714 @@
   <title>¿Sabes lo que bebes? — Maresme</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* ── BRAND TOKENS (Somos Agua Bonita) ── */
     :root {
-      --teal:        #0b3d52;
-      --teal-mid:    #0d5068;
-      --teal-light:  #1a6b82;
-      --cream:       #f0e9d8;
-      --cream-light: #faf6ef;
-      --sage:        #8db5a5;
-      --sage-light:  #b8d4c8;
-      --sand:        #c9a97a;
-      --text-dark:   #1a2e38;
-      --text-muted:  #5a7a85;
+      --navy:          #0D3C52;
+      --navy-deep:     #0A2F42;
+      --navy-light:    #1A5268;
+      --mint:          #C8DDD8;
+      --mint-light:    #D8EAE5;
+      --mint-pale:     #E8F2EF;
+      --lavender:      #C9C7E8;
+      --lavender-light:#DDDCF2;
+      --cream:         #EDE8DF;
+      --beige:         #F5F1EA;
+      --white:         #FFFFFF;
+      --text:          #0D3C52;
+      --text-muted:    #4A7082;
+      --border:        #B8D0CC;
+
+      --font-brand: 'Cormorant Garamond', Georgia, serif;
+      --font-ui:    'Montserrat', sans-serif;
+      --font-body:  'Lato', sans-serif;
+
+      --shadow-sm: 0 1px 3px rgba(13,60,82,0.08);
+      --shadow-md: 0 4px 16px rgba(13,60,82,0.12);
+      --shadow-lg: 0 8px 32px rgba(13,60,82,0.16);
+      --radius-lg: 1rem;
+      --radius-xl: 1.5rem;
+      --radius-full: 9999px;
+      --transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
     }
 
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--cream-light);
-      color: var(--text-dark);
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--beige);
+      font-size: 1rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
-    p { line-height: 1.75; }
-
-    /* ── REVEAL ANIMATIONS ── */
+    /* ── REVEAL ── */
     .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.75s ease, transform 0.75s ease;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.24s; }
+    .d4 { transition-delay: 0.32s; }
+    .d5 { transition-delay: 0.40s; }
+    .d6 { transition-delay: 0.48s; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 clamp(1rem, 5vw, 2.5rem); }
+    .section { padding: clamp(4rem, 8vw, 6rem) clamp(1rem, 5vw, 2.5rem); }
+    .wave { display: block; width: 100%; line-height: 0; }
+
+    /* ── EYEBROW / LABEL ── */
+    .eyebrow {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .eyebrow--mint { color: var(--mint); }
+    .eyebrow--mint-muted { color: rgba(200,221,216,0.55); }
 
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
-      background: var(--teal);
-      position: relative;
+      background: var(--navy-deep);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 120px 24px 100px;
+      text-align: center;
+      padding: clamp(6rem,12vw,8rem) 1.5rem clamp(4rem,8vw,6rem);
+      position: relative;
       overflow: hidden;
     }
     .hero::before {
       content: '';
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 80% 50% at 20% 80%, rgba(141,181,165,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 20%, rgba(13,80,104,0.4) 0%, transparent 60%);
+        radial-gradient(ellipse 70% 50% at 15% 85%, rgba(200,221,216,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 85% 15%, rgba(26,82,104,0.35) 0%, transparent 55%);
       pointer-events: none;
     }
-    .hero-circle {
+
+    .hero-ring {
       position: absolute;
-      width: 600px;
-      height: 600px;
+      width: 560px; height: 560px;
       border-radius: 50%;
-      border: 1px solid rgba(141,181,165,0.15);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: breathe 6s ease-in-out infinite;
+      border: 1px solid rgba(200,221,216,0.12);
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      animation: breathe 7s ease-in-out infinite;
     }
-    .hero-circle::after {
+    .hero-ring::after {
       content: '';
-      position: absolute;
-      inset: 40px;
+      position: absolute; inset: 44px;
       border-radius: 50%;
-      border: 1px solid rgba(141,181,165,0.08);
+      border: 1px solid rgba(200,221,216,0.06);
     }
     @keyframes breathe {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-      50% { transform: translate(-50%, -50%) scale(1.04); opacity: 0.6; }
+      0%,100% { transform: translate(-50%,-50%) scale(1); opacity:1; }
+      50%      { transform: translate(-50%,-50%) scale(1.04); opacity:0.6; }
     }
 
-    .logo-mark {
-      width: 52px;
-      height: 52px;
-      margin: 0 auto 48px;
+    .hero-mark {
       position: relative;
+      width: 56px; height: 56px;
+      margin: 0 auto 2.5rem;
     }
-    .logo-mark svg { width: 100%; height: 100%; }
+    .hero-mark svg { width: 100%; height: 100%; }
 
-    .hero-label {
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
+    .hero-location {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 32px;
+      color: var(--mint);
+      opacity: 0.7;
+      margin-bottom: 2rem;
       position: relative;
     }
-    .hero-label::before, .hero-label::after {
+    .hero-location::before, .hero-location::after {
       content: '';
       display: inline-block;
-      width: 28px;
-      height: 1px;
-      background: var(--sage);
+      width: 24px; height: 1px;
+      background: var(--mint);
       vertical-align: middle;
       opacity: 0.4;
     }
-    .hero-label::before { margin-right: 14px; }
-    .hero-label::after  { margin-left: 14px; }
+    .hero-location::before { margin-right: 14px; }
+    .hero-location::after  { margin-left: 14px; }
 
     .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(3rem, 8vw, 7rem);
-      color: var(--cream);
-      text-align: center;
+      font-family: var(--font-brand);
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(3.2rem, 9vw, 7rem);
+      color: var(--mint-light);
       line-height: 1.05;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       position: relative;
-      max-width: 820px;
+      max-width: 800px;
     }
-    .hero h1 em { font-style: italic; color: var(--sage-light); }
+    .hero h1 span {
+      font-style: normal;
+      font-weight: 300;
+      color: rgba(216,234,229,0.65);
+    }
 
     .hero-sub {
-      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
-      color: rgba(240,233,216,0.65);
-      text-align: center;
-      max-width: 500px;
-      margin-top: 28px;
+      font-family: var(--font-body);
+      font-size: clamp(0.9rem, 1.5vw, 1rem);
       font-weight: 300;
+      color: rgba(200,221,216,0.6);
+      max-width: 480px;
+      margin: 1.75rem auto 0;
       line-height: 1.85;
       position: relative;
     }
 
     .hero-cta {
-      margin-top: 48px;
       position: relative;
+      margin-top: 3rem;
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      background: var(--sage);
-      color: var(--teal);
-      font-family: 'Outfit', sans-serif;
-      font-weight: 600;
-      font-size: 0.82rem;
-      letter-spacing: 0.12em;
+      gap: 10px;
+      background: var(--mint);
+      color: var(--navy-deep);
+      font-family: var(--font-ui);
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       text-decoration: none;
-      padding: 18px 40px;
-      border-radius: 100px;
-      transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+      padding: 1.1rem 2.5rem;
+      border-radius: var(--radius-full);
+      transition: var(--transition);
     }
     .hero-cta:hover {
-      background: var(--sage-light);
+      background: var(--mint-light);
       transform: translateY(-2px);
-      box-shadow: 0 16px 40px rgba(141,181,165,0.3);
+      box-shadow: 0 12px 32px rgba(200,221,216,0.25);
     }
-    .hero-cta svg { width: 15px; height: 15px; }
-    .hero-note {
-      margin-top: 16px;
-      font-size: 0.72rem;
-      color: rgba(240,233,216,0.35);
-      letter-spacing: 0.05em;
+    .hero-cta svg { width: 14px; height: 14px; }
+
+    .hero-footnote {
       position: relative;
-    }
-
-    /* Wave divider */
-    .wave { display: block; width: 100%; line-height: 0; }
-
-    /* ── SECTION BASE ── */
-    .section { padding: 100px 24px; }
-    .container { max-width: 1080px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.64rem;
-      font-weight: 600;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 20px;
+      margin-top: 1rem;
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: rgba(200,221,216,0.28);
     }
 
     /* ── PROBLEMA ── */
-    .problema { background: var(--cream-light); }
-    .problema-intro { max-width: 600px; margin-bottom: 64px; }
+    .problema { background: var(--beige); }
+    .problema .container { max-width: 1080px; margin: 0 auto; }
+
+    .problema-intro { max-width: 580px; margin-bottom: 3.5rem; }
     .problema-intro h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.2rem, 4vw, 3.5rem);
-      font-weight: 400;
-      color: var(--teal);
+      font-family: var(--font-brand);
+      font-weight: 500;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      color: var(--navy);
       line-height: 1.1;
-      margin-bottom: 20px;
+      margin-bottom: 1rem;
     }
-    .problema-intro p { color: var(--text-muted); font-size: 1rem; }
+    .problema-intro p {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
 
     .problema-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2px;
-      background: rgba(11,61,82,0.07);
-      border-radius: 24px;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
       overflow: hidden;
     }
     .problema-card {
-      background: var(--cream-light);
-      padding: 48px 40px;
-      transition: background 0.25s;
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      transition: background 0.2s;
     }
-    .problema-card:hover { background: var(--cream); }
+    .problema-card:hover { background: var(--mint-pale); }
     .problema-symbol {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.5rem;
+      font-family: var(--font-brand);
+      font-size: 3rem;
       font-weight: 300;
-      color: var(--teal);
-      opacity: 0.22;
+      color: var(--navy);
+      opacity: 0.18;
       line-height: 1;
-      margin-bottom: 24px;
-      letter-spacing: -0.05em;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.04em;
     }
     .problema-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
+      font-family: var(--font-brand);
+      font-size: 1.35rem;
       font-weight: 500;
-      color: var(--teal);
-      margin-bottom: 12px;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
     }
-    .problema-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+    .problema-card p {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    .problema-note {
+      margin-top: 2rem;
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
 
     /* ── OSMOSIS ── */
-    .osmosis { background: var(--teal); }
+    .osmosis { background: var(--navy); }
     .osmosis h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 400;
-      color: var(--cream);
+      font-family: var(--font-brand);
+      font-weight: 500;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      color: var(--mint-light);
       line-height: 1.1;
-      margin-bottom: 16px;
+      margin-bottom: 0.75rem;
     }
-    .osmosis-lead { color: rgba(240,233,216,0.55); font-size: 1rem; max-width: 480px; margin-bottom: 60px; }
+    .osmosis-lead {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: rgba(200,221,216,0.5);
+      max-width: 460px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
     .osmosis-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 24px;
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+      border-radius: var(--radius-xl);
       overflow: hidden;
     }
-    @media (max-width: 620px) { .osmosis-grid { grid-template-columns: 1fr; } }
-    .osmosis-col { padding: 48px 40px; }
+    @media (max-width: 600px) { .osmosis-grid { grid-template-columns: 1fr; } }
+
+    .osmosis-col { padding: 2.5rem 2rem; }
     .osmosis-col.bad  { background: rgba(255,255,255,0.03); }
-    .osmosis-col.good { background: rgba(141,181,165,0.1); }
-    .osmosis-col-label {
-      font-size: 0.63rem;
+    .osmosis-col.good { background: rgba(200,221,216,0.08); }
+
+    .col-label {
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      margin-bottom: 28px;
+      margin-bottom: 1.5rem;
+      display: block;
     }
-    .bad  .osmosis-col-label { color: rgba(240,233,216,0.35); }
-    .good .osmosis-col-label { color: var(--sage); }
-    .osmosis-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
-    .osmosis-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 0.88rem; line-height: 1.65; }
-    .bad  .osmosis-list li { color: rgba(240,233,216,0.6); }
-    .good .osmosis-list li { color: rgba(240,233,216,0.9); }
-    .osmosis-list li span {
+    .bad  .col-label { color: rgba(200,221,216,0.3); }
+    .good .col-label { color: var(--mint); }
+
+    .osmosis-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .osmosis-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      line-height: 1.65;
+    }
+    .bad  .osmosis-list li { color: rgba(200,221,216,0.55); }
+    .good .osmosis-list li { color: rgba(216,234,229,0.9); }
+
+    .osmosis-list li .dot {
       flex-shrink: 0;
-      width: 18px;
-      height: 18px;
+      width: 18px; height: 18px;
       border-radius: 50%;
       margin-top: 2px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.6rem;
+      font-size: 0.55rem;
       font-weight: 700;
+      font-family: var(--font-ui);
     }
-    .bad  .osmosis-list li span { background: rgba(255,255,255,0.08); color: rgba(240,233,216,0.4); }
-    .good .osmosis-list li span { background: var(--sage); color: var(--teal); }
+    .bad  .osmosis-list li .dot { background: rgba(255,255,255,0.07); color: rgba(200,221,216,0.35); }
+    .good .osmosis-list li .dot { background: var(--mint); color: var(--navy-deep); }
+
+    .osmosis-note {
+      margin-top: 2rem;
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: rgba(200,221,216,0.25);
+      line-height: 1.8;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
     /* ── BENEFICIOS ── */
-    .beneficios { background: var(--cream); }
+    .beneficios { background: var(--mint); }
     .beneficios h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.2rem, 4vw, 3.5rem);
-      font-weight: 400;
-      color: var(--teal);
+      font-family: var(--font-brand);
+      font-weight: 500;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      color: var(--navy);
       line-height: 1.1;
-      max-width: 460px;
-      margin-bottom: 16px;
+      max-width: 420px;
+      margin-bottom: 0.75rem;
     }
-    .beneficios-lead { color: var(--text-muted); font-size: 0.98rem; max-width: 440px; margin-bottom: 64px; }
-    .beneficios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px 48px; }
-    .beneficio-item { display: flex; gap: 20px; align-items: flex-start; }
+    .beneficios-lead {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 400px;
+      margin-bottom: 3.5rem;
+      line-height: 1.8;
+    }
+    .beneficios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem 3rem;
+    }
+    .beneficio {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
     .beneficio-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem;
+      font-family: var(--font-brand);
       font-weight: 300;
-      color: var(--sage);
+      font-size: 2.6rem;
+      color: var(--navy);
+      opacity: 0.2;
       line-height: 1;
       flex-shrink: 0;
-      opacity: 0.55;
+      letter-spacing: -0.02em;
     }
-    .beneficio-item h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
+    .beneficio h3 {
+      font-family: var(--font-brand);
       font-weight: 500;
-      color: var(--teal);
-      margin-bottom: 8px;
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
       line-height: 1.2;
     }
-    .beneficio-item p { font-size: 0.86rem; color: var(--text-muted); line-height: 1.7; }
+    .beneficio p {
+      font-family: var(--font-body);
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
 
     /* ── NOSOTROS ── */
-    .nosotros { background: var(--teal-mid); }
-    .nosotros-header { margin-bottom: 60px; }
-    .nosotros-header h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.2rem, 4vw, 3.5rem);
-      font-weight: 400;
-      color: var(--cream);
+    .nosotros { background: var(--navy-deep); }
+    .nosotros-intro { margin-bottom: 3rem; }
+    .nosotros-intro h2 {
+      font-family: var(--font-brand);
+      font-weight: 500;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      color: var(--mint-light);
       line-height: 1.1;
-      margin-bottom: 16px;
+      margin-bottom: 0.75rem;
     }
-    .nosotros-header p { color: rgba(240,233,216,0.55); font-size: 0.98rem; max-width: 500px; }
-    .nosotros-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    @media (max-width: 860px) { .nosotros-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 560px) { .nosotros-grid { grid-template-columns: 1fr; } }
+    .nosotros-intro p {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: rgba(200,221,216,0.5);
+      max-width: 520px;
+      line-height: 1.8;
+    }
+
+    .personas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 820px) { .personas-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 520px) { .personas-grid { grid-template-columns: 1fr; } }
+
     .persona-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(141,181,165,0.15);
-      border-radius: 20px;
-      padding: 44px 36px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200,221,216,0.12);
+      border-radius: var(--radius-xl);
+      padding: 2.25rem 1.75rem;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 1.1rem;
       transition: background 0.25s, border-color 0.25s;
     }
-    .persona-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(141,181,165,0.3); }
+    .persona-card:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(200,221,216,0.25);
+    }
     .persona-photo {
-      width: 72px;
-      height: 72px;
+      width: 64px; height: 64px;
       border-radius: 50%;
-      background: rgba(141,181,165,0.15);
-      border: 1px solid rgba(141,181,165,0.25);
+      background: rgba(200,221,216,0.12);
+      border: 1px solid rgba(200,221,216,0.2);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      flex-shrink: 0;
     }
-    .persona-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-    .persona-photo-placeholder { font-size: 0.6rem; color: var(--sage); font-weight: 500; text-align: center; padding: 6px; }
-    .persona-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
+    .persona-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .persona-photo-label {
+      font-family: var(--font-ui);
+      font-size: 0.55rem;
+      color: var(--mint);
+      font-weight: 500;
+      text-align: center;
+      padding: 4px;
+    }
+    .persona-name {
+      font-family: var(--font-brand);
       font-weight: 400;
-      color: var(--cream);
+      font-size: 1.45rem;
+      color: var(--mint-light);
+      line-height: 1.1;
       margin-bottom: 2px;
     }
     .persona-loc {
-      font-size: 0.65rem;
-      color: var(--sage);
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
+      color: var(--mint);
+      opacity: 0.65;
     }
-    .persona-card p { font-size: 0.86rem; color: rgba(240,233,216,0.55); line-height: 1.75; }
+    .persona-card p {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: rgba(200,221,216,0.5);
+      line-height: 1.75;
+    }
 
     /* ── CONTACTO ── */
-    .contacto { background: var(--cream-light); padding: 120px 24px; }
-    .contacto-inner { max-width: 680px; margin: 0 auto; text-align: center; }
-    .divider { width: 44px; height: 1px; background: var(--sage); margin: 0 auto 32px; opacity: 0.45; }
-    .contacto h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      font-weight: 400;
-      color: var(--teal);
-      line-height: 1.05;
-      margin-bottom: 20px;
+    .contacto { background: var(--cream); }
+    .contacto-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
     }
-    .contacto h2 em { font-style: italic; color: var(--sage); }
-    .contacto-lead {
-      color: var(--text-muted);
-      font-size: 1rem;
-      margin-bottom: 52px;
-      max-width: 440px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .contacto-buttons { display: flex; flex-direction: column; gap: 14px; align-items: center; }
-    @media (min-width: 480px) { .contacto-buttons { flex-direction: row; justify-content: center; } }
 
-    .btn-wa {
+    .divider-line {
+      width: 40px; height: 2px;
+      background: var(--navy);
+      opacity: 0.2;
+      margin: 0 auto 2rem;
+    }
+
+    .contacto h2 {
+      font-family: var(--font-brand);
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      color: var(--navy);
+      line-height: 1.05;
+      margin-bottom: 1.25rem;
+    }
+    .contacto h2 em {
+      font-style: normal;
+      font-weight: 500;
+    }
+    .contacto-lead {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 420px;
+      margin: 0 auto 3rem;
+    }
+
+    /* Highlight box (lavender) */
+    .highlight-box {
+      background: var(--lavender-light);
+      border-radius: var(--radius-xl);
+      padding: 1.5rem 2rem;
+      margin-bottom: 2.5rem;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--navy);
+      line-height: 1.75;
+      text-align: left;
+    }
+    .highlight-box strong {
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.4rem;
+      color: var(--navy);
+      opacity: 0.7;
+    }
+
+    .contacto-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    @media (min-width: 460px) {
+      .contacto-btns { flex-direction: row; justify-content: center; }
+    }
+
+    .btn-primary {
       display: inline-flex;
       align-items: center;
-      gap: 11px;
-      background: var(--teal);
-      color: var(--cream);
-      font-family: 'Outfit', sans-serif;
+      gap: 10px;
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--font-ui);
       font-weight: 600;
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       text-decoration: none;
-      padding: 18px 34px;
-      border-radius: 100px;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      padding: 1rem 2rem;
+      border-radius: var(--radius-full);
+      border: 2px solid var(--navy);
+      transition: var(--transition);
     }
-    .btn-wa:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 14px 36px rgba(11,61,82,0.2); }
-    .btn-wa svg { width: 17px; height: 17px; flex-shrink: 0; }
-    .btn-wa.alt { background: transparent; color: var(--teal); border: 1.5px solid var(--teal); }
-    .btn-wa.alt:hover { background: var(--teal); color: var(--cream); }
+    .btn-primary:hover {
+      background: var(--navy-light);
+      border-color: var(--navy-light);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+    .btn-primary svg { width: 16px; height: 16px; flex-shrink: 0; }
 
-    .contacto-phones { margin-top: 36px; font-size: 0.78rem; color: var(--text-muted); letter-spacing: 0.04em; }
-    .contacto-phones strong { color: var(--teal); font-weight: 600; }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--navy);
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border-radius: var(--radius-full);
+      border: 2px solid var(--navy);
+      transition: var(--transition);
+    }
+    .btn-outline:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .btn-outline svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    .contacto-phones {
+      margin-top: 2rem;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+    .contacto-phones strong { color: var(--navy); font-weight: 700; }
 
     /* ── FOOTER ── */
-    footer { background: var(--teal); padding: 36px 24px; text-align: center; }
-    footer p { font-size: 0.72rem; color: rgba(240,233,216,0.35); letter-spacing: 0.1em; }
-    footer strong { color: rgba(240,233,216,0.6); font-weight: 500; }
+    footer {
+      background: var(--navy-deep);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    .footer-wordmark {
+      font-family: var(--font-brand);
+      font-style: italic;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--mint-light);
+      opacity: 0.6;
+      margin-bottom: 0.5rem;
+    }
+    footer p {
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(200,221,216,0.25);
+    }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
+  <!-- ── HERO ── -->
   <section class="hero">
-    <div class="hero-circle"></div>
+    <div class="hero-ring"></div>
 
-    <div class="logo-mark reveal">
-      <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="26" cy="26" r="25" stroke="rgba(141,181,165,0.3)" stroke-width="1"/>
-        <path d="M26 38 C26 38 16 30 16 23 C16 17.477 20.477 13 26 13 C31.523 13 36 17.477 36 23 C36 30 26 38 26 38Z" fill="rgba(141,181,165,0.2)" stroke="rgba(141,181,165,0.5)" stroke-width="1"/>
-        <path d="M26 24 L26 32" stroke="rgba(141,181,165,0.5)" stroke-width="1" stroke-linecap="round"/>
-        <path d="M22 27 C22 27 24 25 26 26" stroke="rgba(141,181,165,0.5)" stroke-width="1" stroke-linecap="round"/>
+    <div class="hero-mark reveal">
+      <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="28" cy="28" r="27" stroke="rgba(200,221,216,0.25)" stroke-width="1"/>
+        <path d="M28 8C28 8 14 20 14 29C14 36.732 20.268 43 28 43C35.732 43 42 36.732 42 29C42 20 28 8 28 8Z" fill="rgba(200,221,216,0.12)" stroke="rgba(200,221,216,0.45)" stroke-width="1"/>
+        <path d="M28 16C28 16 20 24 20 29C20 33.418 23.582 37 28 37C32.418 37 36 33.418 36 29C36 24 28 16 28 16Z" fill="rgba(200,221,216,0.18)" stroke="rgba(200,221,216,0.3)" stroke-width="0.75"/>
       </svg>
     </div>
 
-    <p class="hero-label reveal reveal-delay-1">Vecinos del Maresme</p>
+    <p class="hero-location reveal d1">Vecinos del Maresme</p>
 
-    <h1 class="reveal reveal-delay-2">
-      ¿Sabes lo que<br /><em>realmente</em> bebes?
+    <h1 class="reveal d2">
+      ¿Sabes lo que<br />
+      <span>realmente</span> bebes?
     </h1>
 
-    <p class="hero-sub reveal reveal-delay-3">
+    <p class="hero-sub reveal d3">
       El agua del grifo en el Maresme llega con cloro, metales y un pH que no le hace ningún favor a tu cuerpo.
       Somos Alejandro y Gemma, vivimos en Tiana, y encontramos una solución que cambia todo eso.
     </p>
 
-    <a href="#contacto" class="hero-cta reveal reveal-delay-4">
+    <a href="#contacto" class="hero-cta reveal d4">
       Habla con nosotros
-      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
-    <p class="hero-note reveal reveal-delay-5">Sin compromiso. Solo una conversación entre vecinos.</p>
+    <p class="hero-footnote reveal d5">Sin compromiso · Solo una conversación entre vecinos</p>
   </section>
 
-  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" style="background:var(--teal)">
-    <path fill="var(--cream-light)" d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z"/>
+  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 56" style="background:var(--navy-deep)">
+    <path fill="var(--beige)" d="M0,28 C240,56 480,0 720,28 C960,56 1200,0 1440,28 L1440,56 L0,56 Z"/>
   </svg>
 
-  <!-- PROBLEMA -->
+
+  <!-- ── PROBLEMA ── -->
   <section class="section problema">
     <div class="container">
       <div class="problema-intro">
-        <p class="section-label reveal">El agua del grifo</p>
-        <h2 class="reveal reveal-delay-1">El agua del Maresme tiene un problema</h2>
-        <p class="reveal reveal-delay-2">No es peligrosa, cumple normativa. Pero eso no significa que sea buena para tu cuerpo.</p>
+        <span class="eyebrow reveal">El agua del grifo</span>
+        <h2 class="reveal d1">El agua del Maresme tiene un problema</h2>
+        <p class="reveal d2">No es peligrosa, cumple normativa. Pero eso no significa que sea buena para tu cuerpo.</p>
       </div>
       <div class="problema-grid">
         <div class="problema-card reveal">
@@ -484,111 +721,108 @@
           <h3>Cloro residual</h3>
           <p>Se añade para desinfectar, pero llega a tu vaso. Altera el sabor, el olor y la microbiota intestinal con el tiempo.</p>
         </div>
-        <div class="problema-card reveal reveal-delay-1">
+        <div class="problema-card reveal d1">
           <div class="problema-symbol">Ca²⁺</div>
           <h3>Agua muy dura</h3>
-          <p>Alta concentración de calcio y magnesio. Lo ves en la cafetera y en la tetera. También ocurre dentro de tu cuerpo.</p>
+          <p>Alta concentración de calcio y magnesio. Lo ves en la cafetera y la tetera. También ocurre dentro de tu cuerpo.</p>
         </div>
-        <div class="problema-card reveal reveal-delay-2">
+        <div class="problema-card reveal d2">
           <div class="problema-symbol">pH</div>
           <h3>pH desequilibrado</h3>
           <p>El agua de red es ligeramente ácida o neutra. El organismo funciona mejor en un entorno levemente alcalino.</p>
         </div>
       </div>
-      <p class="reveal reveal-delay-3" style="margin-top:36px; font-size:0.83rem; color:var(--text-muted); text-align:center;">
-        La solución de muchos es comprar garrafas. Es cara, genera plástico y no es tan buena como parece.
-      </p>
+      <p class="problema-note reveal d3">La solución de muchos es comprar garrafas. Es cara, genera plástico y no es tan buena como parece.</p>
     </div>
   </section>
 
-  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" style="background:var(--cream-light)">
-    <path fill="var(--teal)" d="M0,30 C360,0 720,60 1080,30 C1260,15 1380,40 1440,30 L1440,60 L0,60 Z"/>
+  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 56" style="background:var(--beige)">
+    <path fill="var(--navy)" d="M0,28 C360,0 720,56 1080,28 C1260,14 1380,42 1440,28 L1440,56 L0,56 Z"/>
   </svg>
 
-  <!-- OSMOSIS -->
+
+  <!-- ── OSMOSIS ── -->
   <section class="section osmosis">
     <div class="container">
-      <p class="section-label reveal">La trampa habitual</p>
-      <h2 class="reveal reveal-delay-1">La ósmosis no es<br />la respuesta</h2>
-      <p class="osmosis-lead reveal reveal-delay-2">Muchos dan el salto a la ósmosis pensando que han resuelto el problema. Tiene una trampa grande.</p>
+      <span class="eyebrow eyebrow--mint-muted reveal">La trampa habitual</span>
+      <h2 class="reveal d1">La ósmosis no es<br />la respuesta</h2>
+      <p class="osmosis-lead reveal d2">Muchos dan el salto a la ósmosis pensando que han resuelto el problema. Tiene una trampa grande.</p>
 
-      <div class="osmosis-grid reveal reveal-delay-2">
+      <div class="osmosis-grid reveal d2">
         <div class="osmosis-col bad">
-          <div class="osmosis-col-label">Osmosis inversa</div>
+          <span class="col-label">Osmosis inversa</span>
           <ul class="osmosis-list">
-            <li><span>✗</span>Elimina el cloro — bien hasta aquí</li>
-            <li><span>✗</span>Pero también elimina todos los minerales esenciales: calcio, magnesio, potasio</li>
-            <li><span>✗</span>El resultado es agua "muerta" — limpia de todo, incluyendo lo bueno</li>
-            <li><span>✗</span>pH muy bajo (ácido), que puede desmineralizar el organismo con el tiempo</li>
-            <li><span>✗</span>Genera mucha agua de desecho en el proceso de filtrado</li>
+            <li><span class="dot">✗</span>Elimina el cloro — bien hasta aquí</li>
+            <li><span class="dot">✗</span>Pero también elimina todos los minerales esenciales: calcio, magnesio, potasio</li>
+            <li><span class="dot">✗</span>El resultado es agua "muerta" — limpia de todo, incluyendo lo bueno</li>
+            <li><span class="dot">✗</span>pH muy bajo (ácido), que puede desmineralizar el organismo con el tiempo</li>
+            <li><span class="dot">✗</span>Genera mucha agua de desecho en el proceso de filtrado</li>
           </ul>
         </div>
         <div class="osmosis-col good">
-          <div class="osmosis-col-label">Ionización alcalina</div>
+          <span class="col-label">Ionización alcalina</span>
           <ul class="osmosis-list">
-            <li><span>✓</span>Filtra el cloro, sedimentos y sustancias nocivas</li>
-            <li><span>✓</span>Conserva los minerales naturales del agua</li>
-            <li><span>✓</span>Eleva el pH a niveles alcalinos (8.5–9.5) favorables para el cuerpo</li>
-            <li><span>✓</span>Genera hidrógeno molecular (H₂), uno de los antioxidantes más estudiados</li>
-            <li><span>✓</span>Agua ilimitada directamente del grifo — sin plásticos, sin garrafas</li>
+            <li><span class="dot">✓</span>Filtra el cloro, sedimentos y sustancias nocivas</li>
+            <li><span class="dot">✓</span>Conserva los minerales naturales del agua</li>
+            <li><span class="dot">✓</span>Eleva el pH a niveles alcalinos (8.5–9.5) favorables para el cuerpo</li>
+            <li><span class="dot">✓</span>Genera hidrógeno molecular (H₂), uno de los antioxidantes más estudiados</li>
+            <li><span class="dot">✓</span>Agua ilimitada directamente del grifo — sin plásticos, sin garrafas</li>
           </ul>
         </div>
       </div>
-
-      <p class="reveal reveal-delay-3" style="margin-top:32px; font-size:0.8rem; color:rgba(240,233,216,0.3); text-align:center; max-width:480px; margin-left:auto; margin-right:auto; line-height:1.75;">
-        El proceso se llama electrólisis. El agua pasa por placas de titanio y platino que separan las partículas ácidas de las alcalinas. El resultado es agua limpia, mineralizada y rica en hidrógeno.
-      </p>
+      <p class="osmosis-note reveal d3">El proceso se llama electrólisis. El agua pasa por placas de titanio y platino que separan las partículas ácidas de las alcalinas. El resultado es agua limpia, mineralizada y rica en hidrógeno.</p>
     </div>
   </section>
 
-  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" style="background:var(--teal)">
-    <path fill="var(--cream)" d="M0,20 C480,60 960,0 1440,40 L1440,60 L0,60 Z"/>
+  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 56" style="background:var(--navy)">
+    <path fill="var(--mint)" d="M0,20 C480,56 960,0 1440,36 L1440,56 L0,56 Z"/>
   </svg>
 
-  <!-- BENEFICIOS -->
+
+  <!-- ── BENEFICIOS ── -->
   <section class="section beneficios">
     <div class="container">
-      <p class="section-label reveal">Lo que nota tu cuerpo</p>
-      <h2 class="reveal reveal-delay-1">Más que quitar<br />la sed</h2>
-      <p class="beneficios-lead reveal reveal-delay-2">Lo que reportan las personas que llevan meses bebiendo agua alcalina ionizada.</p>
+      <span class="eyebrow reveal">Lo que nota tu cuerpo</span>
+      <h2 class="reveal d1">Más que quitar<br />la sed</h2>
+      <p class="beneficios-lead reveal d2">Lo que reportan las personas que llevan meses bebiendo agua alcalina ionizada.</p>
 
       <div class="beneficios-grid">
-        <div class="beneficio-item reveal">
+        <div class="beneficio reveal">
           <div class="beneficio-num">01</div>
           <div>
             <h3>Mejor hidratación celular</h3>
             <p>Las moléculas de agua ionizada penetran mejor en las células. Bebes menos y te hidratas más. Muchos atletas lo notan en la recuperación.</p>
           </div>
         </div>
-        <div class="beneficio-item reveal reveal-delay-1">
+        <div class="beneficio reveal d1">
           <div class="beneficio-num">02</div>
           <div>
             <h3>Antioxidante natural</h3>
             <p>El hidrógeno molecular (H₂) ayuda a neutralizar radicales libres y reducir el estrés oxidativo — vinculado al envejecimiento celular prematuro.</p>
           </div>
         </div>
-        <div class="beneficio-item reveal reveal-delay-2">
+        <div class="beneficio reveal d2">
           <div class="beneficio-num">03</div>
           <div>
             <h3>Equilibrio del pH</h3>
-            <p>La dieta moderna tiende a acidificar el organismo. El agua alcalina contrarresta esa acidez y ayuda a mantener el entorno interno equilibrado.</p>
+            <p>La dieta moderna tiende a acidificar el organismo. El agua alcalina contrarresta esa acidez y mantiene el entorno interno equilibrado.</p>
           </div>
         </div>
-        <div class="beneficio-item reveal reveal-delay-3">
+        <div class="beneficio reveal d3">
           <div class="beneficio-num">04</div>
           <div>
             <h3>Digestión y energía</h3>
             <p>Muchas personas con problemas digestivos o falta de energía notan mejoras notables en pocas semanas. El agua que bebes afecta a todo el sistema.</p>
           </div>
         </div>
-        <div class="beneficio-item reveal reveal-delay-4">
+        <div class="beneficio reveal d4">
           <div class="beneficio-num">05</div>
           <div>
             <h3>Piel e hidratación externa</h3>
             <p>El sistema también produce agua para la ducha que elimina el cloro y mineraliza. La piel y el cabello lo notan — menos sequedad, menos irritación.</p>
           </div>
         </div>
-        <div class="beneficio-item reveal reveal-delay-5">
+        <div class="beneficio reveal d5">
           <div class="beneficio-num">06</div>
           <div>
             <h3>Un dispositivo, cinco aguas</h3>
@@ -599,111 +833,128 @@
     </div>
   </section>
 
-  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" style="background:var(--cream)">
-    <path fill="var(--teal-mid)" d="M0,40 C360,10 720,55 1080,20 C1260,5 1380,45 1440,30 L1440,60 L0,60 Z"/>
+  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 56" style="background:var(--mint)">
+    <path fill="var(--navy-deep)" d="M0,36 C360,8 720,52 1080,18 C1260,4 1380,44 1440,28 L1440,56 L0,56 Z"/>
   </svg>
 
-  <!-- NOSOTROS -->
+
+  <!-- ── NOSOTROS ── -->
   <section class="section nosotros">
     <div class="container">
-      <div class="nosotros-header">
-        <p class="section-label reveal">Quiénes somos</p>
-        <h2 class="reveal reveal-delay-1">Somos vecinos,<br />no vendedores</h2>
-        <p class="reveal reveal-delay-2">Vivimos en Tiana. Descubrimos esto por curiosidad, lo probamos con escepticismo y nos convenció. Nos pareció suficientemente bueno como para contárselo a los de aquí cerca.</p>
+      <div class="nosotros-intro">
+        <span class="eyebrow eyebrow--mint-muted reveal">Quiénes somos</span>
+        <h2 class="reveal d1">Somos vecinos,<br />no vendedores</h2>
+        <p class="reveal d2">Vivimos en Tiana. Descubrimos esto por curiosidad, lo probamos con escepticismo y nos convenció. Nos pareció suficientemente bueno como para contárselo a los de aquí cerca.</p>
       </div>
-      <div class="nosotros-grid">
+
+      <div class="personas-grid">
+
         <div class="persona-card reveal">
           <!--
-            FOTO ALEJANDRO — sustituye por:
-            <div class="persona-photo"><img src="ruta_foto.jpg" alt="Alejandro Martínez" /></div>
+            FOTO ALEJANDRO — reemplaza este bloque por:
+            <div class="persona-photo"><img src="foto-alejandro.jpg" alt="Alejandro Martínez" /></div>
           -->
           <div class="persona-photo">
-            <span class="persona-photo-placeholder">Foto<br/>Alejandro</span>
+            <span class="persona-photo-label">Foto<br/>Alejandro</span>
           </div>
           <div>
-            <h3>Alejandro Martínez</h3>
+            <p class="persona-name">Alejandro Martínez</p>
             <p class="persona-loc">Tiana · Maresme</p>
           </div>
           <p>Empecé a informarme sobre el agua por un tema de salud personal. Lo probé con bastante escepticismo — y la diferencia fue lo suficientemente clara como para no poder ignorarla.</p>
         </div>
-        <div class="persona-card reveal reveal-delay-2">
+
+        <div class="persona-card reveal d2">
           <!--
-            FOTO GEMMA — sustituye por:
-            <div class="persona-photo"><img src="ruta_foto.jpg" alt="Gemma Oña" /></div>
+            FOTO GEMMA — reemplaza este bloque por:
+            <div class="persona-photo"><img src="foto-gemma.jpg" alt="Gemma Oña" /></div>
           -->
           <div class="persona-photo">
-            <span class="persona-photo-placeholder">Foto<br/>Gemma</span>
+            <span class="persona-photo-label">Foto<br/>Gemma</span>
           </div>
           <div>
-            <h3>Gemma Oña</h3>
+            <p class="persona-name">Gemma Oña</p>
             <p class="persona-loc">Tiana · Maresme</p>
           </div>
           <p>Siempre he prestado atención a la alimentación y los hábitos. El agua es la base de todo y muchas veces la más descuidada. Desde que cambiamos la nuestra, no hemos vuelto atrás.</p>
         </div>
 
-        <div class="persona-card reveal reveal-delay-3">
+        <div class="persona-card reveal d4">
           <!--
-            FOTO ROCÍO — sustituye por:
-            <div class="persona-photo"><img src="ruta_foto.jpg" alt="Rocío López Ridolfo" /></div>
+            FOTO ROCÍO — reemplaza este bloque por:
+            <div class="persona-photo"><img src="foto-rocio.jpg" alt="Rocío López Ridolfo" /></div>
           -->
           <div class="persona-photo">
-            <span class="persona-photo-placeholder">Foto<br/>Rocío</span>
+            <span class="persona-photo-label">Foto<br/>Rocío</span>
           </div>
           <div>
-            <h3>Rocío López Ridolfo</h3>
+            <p class="persona-name">Rocío López Ridolfo</p>
             <p class="persona-loc">Maresme</p>
           </div>
           <p>Me acerqué al agua alcalina con mucha curiosidad y pocas expectativas. Lo que encontré fue una diferencia real en cómo me siento. Ahora me gusta compartirlo con quien quiera escuchar.</p>
         </div>
+
       </div>
     </div>
   </section>
 
-  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" style="background:var(--teal-mid)">
-    <path fill="var(--cream-light)" d="M0,30 C480,60 960,0 1440,40 L1440,60 L0,60 Z"/>
+  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 56" style="background:var(--navy-deep)">
+    <path fill="var(--cream)" d="M0,28 C480,56 960,0 1440,36 L1440,56 L0,56 Z"/>
   </svg>
 
-  <!-- CONTACTO -->
-  <section class="contacto" id="contacto">
+
+  <!-- ── CONTACTO ── -->
+  <section class="section contacto" id="contacto">
     <div class="contacto-inner">
-      <div class="divider reveal"></div>
-      <p class="section-label reveal reveal-delay-1">Dar el primer paso</p>
-      <h2 class="reveal reveal-delay-2">Cuéntanos<br /><em>tu situación</em></h2>
-      <p class="contacto-lead reveal reveal-delay-3">
+      <div class="divider-line reveal"></div>
+      <span class="eyebrow reveal d1">Dar el primer paso</span>
+      <h2 class="reveal d2">
+        Cuéntanos<br /><em>tu situación</em>
+      </h2>
+      <p class="contacto-lead reveal d3">
         Una conversación sin compromiso y sin presión. Te explicamos todo, resolvemos tus dudas — y si no es para ti, sin problema.
       </p>
-      <div class="contacto-buttons reveal reveal-delay-4">
+
+      <div class="highlight-box reveal d3">
+        <strong>Sin venta directa</strong>
+        No vendemos en frío ni por internet. Primero hablamos, te contamos nuestra experiencia y respondemos tus dudas. Tú decides si quieres saber más.
+      </div>
+
+      <div class="contacto-btns reveal d4">
         <!--
-          WHATSAPP: sustituye 34600000000 y 34611111111 por los números reales (sin espacios, con prefijo 34)
+          WHATSAPP: sustituye 34600000000 y 34611111111 por los números reales
         -->
-        <a href="https://wa.me/34600000000?text=Hola%20Alejandro%2C%20he%20visto%20vuestra%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20el%20agua." target="_blank" class="btn-wa">
+        <a href="https://wa.me/34600000000?text=Hola%20Alejandro%2C%20he%20visto%20vuestra%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20el%20agua." target="_blank" class="btn-primary">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Alejandro
         </a>
-        <a href="https://wa.me/34611111111?text=Hola%20Gemma%2C%20he%20visto%20vuestra%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20el%20agua." target="_blank" class="btn-wa alt">
+        <a href="https://wa.me/34611111111?text=Hola%20Gemma%2C%20he%20visto%20vuestra%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20el%20agua." target="_blank" class="btn-outline">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Gemma
         </a>
       </div>
-      <p class="contacto-phones reveal reveal-delay-5">
-        O llámanos directamente:
-        <strong>Alejandro +34 600 000 000</strong> · <strong>Gemma +34 611 111 111</strong>
+
+      <p class="contacto-phones reveal d5">
+        O llámanos: <strong>Alejandro +34 600 000 000</strong> · <strong>Gemma +34 611 111 111</strong>
       </p>
     </div>
   </section>
 
+
+  <!-- ── FOOTER ── -->
   <footer>
-    <p><strong>Alejandro Martínez &amp; Gemma Oña</strong> &nbsp;·&nbsp; Distribuidores independientes &nbsp;·&nbsp; Tiana, Maresme</p>
+    <div class="footer-wordmark">somos agua bonita</div>
+    <p>Alejandro Martínez · Gemma Oña · Rocío López Ridolfo · Distribuidores independientes · Tiana, Maresme</p>
   </footer>
 
+
   <script>
-    const observer = new IntersectionObserver(
+    const obs = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    // Hero visible on load
-    document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.classList.add('visible'), 80));
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.classList.add('visible'), 60));
   </script>
 
 </body>
