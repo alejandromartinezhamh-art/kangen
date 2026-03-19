@@ -3,424 +3,692 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>El agua que bebes en el Maresme — ¿sabes realmente lo que contiene?</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            agua: {
-              50:  '#f0f9ff',
-              100: '#e0f2fe',
-              200: '#bae6fd',
-              300: '#7dd3fc',
-              400: '#38bdf8',
-              500: '#0ea5e9',
-              600: '#0284c7',
-              700: '#0369a1',
-              800: '#075985',
-              900: '#0c4a6e',
-            }
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
+  <title>¿Sabes lo que bebes? — Maresme</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:        #0b3d52;
+      --teal-mid:    #0d5068;
+      --teal-light:  #1a6b82;
+      --cream:       #f0e9d8;
+      --cream-light: #faf6ef;
+      --sage:        #8db5a5;
+      --sage-light:  #b8d4c8;
+      --sand:        #c9a97a;
+      --text-dark:   #1a2e38;
+      --text-muted:  #5a7a85;
+    }
+
     html { scroll-behavior: smooth; }
 
-    .hero-bg {
-      background: linear-gradient(135deg, #0c4a6e 0%, #075985 45%, #0369a1 100%);
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream-light);
+      color: var(--text-dark);
+      overflow-x: hidden;
     }
 
-    .card {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    p { line-height: 1.75; }
+
+    /* ── REVEAL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
     }
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 36px rgba(0,0,0,0.1);
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--teal);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px 100px;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 20% 80%, rgba(141,181,165,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 20%, rgba(13,80,104,0.4) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-circle {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(141,181,165,0.15);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: breathe 6s ease-in-out infinite;
+    }
+    .hero-circle::after {
+      content: '';
+      position: absolute;
+      inset: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(141,181,165,0.08);
+    }
+    @keyframes breathe {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      50% { transform: translate(-50%, -50%) scale(1.04); opacity: 0.6; }
     }
 
-    .cta-btn {
-      background: linear-gradient(135deg, #0ea5e9, #0284c7);
-      transition: all 0.2s ease;
+    .logo-mark {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 48px;
+      position: relative;
     }
-    .cta-btn:hover {
-      background: linear-gradient(135deg, #0284c7, #075985);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(14, 165, 233, 0.4);
-    }
+    .logo-mark svg { width: 100%; height: 100%; }
 
-    .wa-btn {
-      background: #25D366;
-      transition: all 0.2s ease;
-    }
-    .wa-btn:hover {
-      background: #1ebe5d;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
-    }
-
-    .problem-bg {
-      background: linear-gradient(135deg, #1e3a5f 0%, #0c4a6e 100%);
-    }
-
-    .tag {
-      background: rgba(14, 165, 233, 0.12);
-      color: #0284c7;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+    .hero-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      padding: 0.25rem 0.75rem;
-      border-radius: 9999px;
+      color: var(--sage);
+      margin-bottom: 32px;
+      position: relative;
     }
+    .hero-label::before, .hero-label::after {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--sage);
+      vertical-align: middle;
+      opacity: 0.4;
+    }
+    .hero-label::before { margin-right: 14px; }
+    .hero-label::after  { margin-left: 14px; }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(3rem, 8vw, 7rem);
+      color: var(--cream);
+      text-align: center;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      position: relative;
+      max-width: 820px;
+    }
+    .hero h1 em { font-style: italic; color: var(--sage-light); }
+
+    .hero-sub {
+      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      color: rgba(240,233,216,0.65);
+      text-align: center;
+      max-width: 500px;
+      margin-top: 28px;
+      font-weight: 300;
+      line-height: 1.85;
+      position: relative;
+    }
+
+    .hero-cta {
+      margin-top: 48px;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--sage);
+      color: var(--teal);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 40px;
+      border-radius: 100px;
+      transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .hero-cta:hover {
+      background: var(--sage-light);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(141,181,165,0.3);
+    }
+    .hero-cta svg { width: 15px; height: 15px; }
+    .hero-note {
+      margin-top: 16px;
+      font-size: 0.72rem;
+      color: rgba(240,233,216,0.35);
+      letter-spacing: 0.05em;
+      position: relative;
+    }
+
+    /* Wave divider */
+    .wave { display: block; width: 100%; line-height: 0; }
+
+    /* ── SECTION BASE ── */
+    .section { padding: 100px 24px; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 20px;
+    }
+
+    /* ── PROBLEMA ── */
+    .problema { background: var(--cream-light); }
+    .problema-intro { max-width: 600px; margin-bottom: 64px; }
+    .problema-intro h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 400;
+      color: var(--teal);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .problema-intro p { color: var(--text-muted); font-size: 1rem; }
+
+    .problema-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+      background: rgba(11,61,82,0.07);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .problema-card {
+      background: var(--cream-light);
+      padding: 48px 40px;
+      transition: background 0.25s;
+    }
+    .problema-card:hover { background: var(--cream); }
+    .problema-symbol {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--teal);
+      opacity: 0.22;
+      line-height: 1;
+      margin-bottom: 24px;
+      letter-spacing: -0.05em;
+    }
+    .problema-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .problema-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── OSMOSIS ── */
+    .osmosis { background: var(--teal); }
+    .osmosis h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .osmosis-lead { color: rgba(240,233,216,0.55); font-size: 1rem; max-width: 480px; margin-bottom: 60px; }
+    .osmosis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    @media (max-width: 620px) { .osmosis-grid { grid-template-columns: 1fr; } }
+    .osmosis-col { padding: 48px 40px; }
+    .osmosis-col.bad  { background: rgba(255,255,255,0.03); }
+    .osmosis-col.good { background: rgba(141,181,165,0.1); }
+    .osmosis-col-label {
+      font-size: 0.63rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .bad  .osmosis-col-label { color: rgba(240,233,216,0.35); }
+    .good .osmosis-col-label { color: var(--sage); }
+    .osmosis-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .osmosis-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 0.88rem; line-height: 1.65; }
+    .bad  .osmosis-list li { color: rgba(240,233,216,0.6); }
+    .good .osmosis-list li { color: rgba(240,233,216,0.9); }
+    .osmosis-list li span {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 700;
+    }
+    .bad  .osmosis-list li span { background: rgba(255,255,255,0.08); color: rgba(240,233,216,0.4); }
+    .good .osmosis-list li span { background: var(--sage); color: var(--teal); }
+
+    /* ── BENEFICIOS ── */
+    .beneficios { background: var(--cream); }
+    .beneficios h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 400;
+      color: var(--teal);
+      line-height: 1.1;
+      max-width: 460px;
+      margin-bottom: 16px;
+    }
+    .beneficios-lead { color: var(--text-muted); font-size: 0.98rem; max-width: 440px; margin-bottom: 64px; }
+    .beneficios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px 48px; }
+    .beneficio-item { display: flex; gap: 20px; align-items: flex-start; }
+    .beneficio-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--sage);
+      line-height: 1;
+      flex-shrink: 0;
+      opacity: 0.55;
+    }
+    .beneficio-item h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--teal);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .beneficio-item p { font-size: 0.86rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── NOSOTROS ── */
+    .nosotros { background: var(--teal-mid); }
+    .nosotros-header { margin-bottom: 60px; }
+    .nosotros-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .nosotros-header p { color: rgba(240,233,216,0.55); font-size: 0.98rem; max-width: 500px; }
+    .nosotros-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 620px) { .nosotros-grid { grid-template-columns: 1fr; } }
+    .persona-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(141,181,165,0.15);
+      border-radius: 20px;
+      padding: 44px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .persona-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(141,181,165,0.3); }
+    .persona-photo {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(141,181,165,0.15);
+      border: 1px solid rgba(141,181,165,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .persona-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .persona-photo-placeholder { font-size: 0.6rem; color: var(--sage); font-weight: 500; text-align: center; padding: 6px; }
+    .persona-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 2px;
+    }
+    .persona-loc {
+      font-size: 0.65rem;
+      color: var(--sage);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .persona-card p { font-size: 0.86rem; color: rgba(240,233,216,0.55); line-height: 1.75; }
+
+    /* ── CONTACTO ── */
+    .contacto { background: var(--cream-light); padding: 120px 24px; }
+    .contacto-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+    .divider { width: 44px; height: 1px; background: var(--sage); margin: 0 auto 32px; opacity: 0.45; }
+    .contacto h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 400;
+      color: var(--teal);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .contacto h2 em { font-style: italic; color: var(--sage); }
+    .contacto-lead {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 52px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .contacto-buttons { display: flex; flex-direction: column; gap: 14px; align-items: center; }
+    @media (min-width: 480px) { .contacto-buttons { flex-direction: row; justify-content: center; } }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      background: var(--teal);
+      color: var(--cream);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 34px;
+      border-radius: 100px;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-wa:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 14px 36px rgba(11,61,82,0.2); }
+    .btn-wa svg { width: 17px; height: 17px; flex-shrink: 0; }
+    .btn-wa.alt { background: transparent; color: var(--teal); border: 1.5px solid var(--teal); }
+    .btn-wa.alt:hover { background: var(--teal); color: var(--cream); }
+
+    .contacto-phones { margin-top: 36px; font-size: 0.78rem; color: var(--text-muted); letter-spacing: 0.04em; }
+    .contacto-phones strong { color: var(--teal); font-weight: 600; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--teal); padding: 36px 24px; text-align: center; }
+    footer p { font-size: 0.72rem; color: rgba(240,233,216,0.35); letter-spacing: 0.1em; }
+    footer strong { color: rgba(240,233,216,0.6); font-weight: 500; }
   </style>
 </head>
-<body class="bg-white text-gray-800 font-sans">
+<body>
 
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-circle"></div>
 
-  <!-- ===================== HERO ===================== -->
-  <section class="hero-bg text-white pt-20 pb-0">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-
-      <p class="text-agua-300 text-sm font-semibold uppercase tracking-widest mb-5">Somos vecinos del Maresme</p>
-
-      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-        ¿Sabes de verdad<br class="hidden md:block" /> lo que bebes?
-      </h1>
-
-      <p class="text-agua-100 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-        El agua del grifo en el Maresme llega a casa con cloro, metales pesados y un pH que no favorece tu cuerpo.
-        Somos Alejandro y Gemma, vivimos en Tiana, y llevamos un tiempo usando una solución que cambia
-        la calidad del agua que bebemos cada día. Aquí te la explicamos.
-      </p>
-
-      <a href="#contacto" class="cta-btn inline-block text-white font-semibold text-lg px-10 py-4 rounded-full shadow-lg">
-        Habla con nosotros
-      </a>
-      <p class="text-agua-300 text-sm mt-4 mb-16">Sin compromiso. Solo una conversación entre vecinos.</p>
+    <div class="logo-mark reveal">
+      <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="26" cy="26" r="25" stroke="rgba(141,181,165,0.3)" stroke-width="1"/>
+        <path d="M26 38 C26 38 16 30 16 23 C16 17.477 20.477 13 26 13 C31.523 13 36 17.477 36 23 C36 30 26 38 26 38Z" fill="rgba(141,181,165,0.2)" stroke="rgba(141,181,165,0.5)" stroke-width="1"/>
+        <path d="M26 24 L26 32" stroke="rgba(141,181,165,0.5)" stroke-width="1" stroke-linecap="round"/>
+        <path d="M22 27 C22 27 24 25 26 26" stroke="rgba(141,181,165,0.5)" stroke-width="1" stroke-linecap="round"/>
+      </svg>
     </div>
 
-    <svg class="block w-full overflow-hidden" style="margin-bottom:-2px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 70">
-      <path fill="#ffffff" d="M0,35 C360,70 1080,0 1440,35 L1440,70 L0,70 Z"></path>
-    </svg>
+    <p class="hero-label reveal reveal-delay-1">Vecinos del Maresme</p>
+
+    <h1 class="reveal reveal-delay-2">
+      ¿Sabes lo que<br /><em>realmente</em> bebes?
+    </h1>
+
+    <p class="hero-sub reveal reveal-delay-3">
+      El agua del grifo en el Maresme llega con cloro, metales y un pH que no le hace ningún favor a tu cuerpo.
+      Somos Alejandro y Gemma, vivimos en Tiana, y encontramos una solución que cambia todo eso.
+    </p>
+
+    <a href="#contacto" class="hero-cta reveal reveal-delay-4">
+      Habla con nosotros
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <p class="hero-note reveal reveal-delay-5">Sin compromiso. Solo una conversación entre vecinos.</p>
   </section>
 
+  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" style="background:var(--teal)">
+    <path fill="var(--cream-light)" d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
 
-  <!-- ===================== EL PROBLEMA ===================== -->
-  <section class="py-20 px-6 bg-white">
-    <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-agua-900 mb-4">
-          El agua del Maresme tiene un problema
-        </h2>
-        <p class="text-gray-500 text-lg leading-relaxed">
-          No es que sea peligrosa. Es legal, cumple normativas. Pero eso no significa que sea buena para tu cuerpo.
-        </p>
+  <!-- PROBLEMA -->
+  <section class="section problema">
+    <div class="container">
+      <div class="problema-intro">
+        <p class="section-label reveal">El agua del grifo</p>
+        <h2 class="reveal reveal-delay-1">El agua del Maresme tiene un problema</h2>
+        <p class="reveal reveal-delay-2">No es peligrosa, cumple normativa. Pero eso no significa que sea buena para tu cuerpo.</p>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-
-        <div class="card bg-red-50 border border-red-100 rounded-2xl p-6 text-center">
-          <div class="text-4xl font-black text-red-400 mb-2">Cl</div>
-          <h3 class="font-bold text-gray-800 mb-2">Cloro residual</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">
-            Se añade para desinfectar, pero llega a tu vaso. Altera el sabor, el olor y la flora intestinal.
-          </p>
+      <div class="problema-grid">
+        <div class="problema-card reveal">
+          <div class="problema-symbol">Cl</div>
+          <h3>Cloro residual</h3>
+          <p>Se añade para desinfectar, pero llega a tu vaso. Altera el sabor, el olor y la microbiota intestinal con el tiempo.</p>
         </div>
-
-        <div class="card bg-amber-50 border border-amber-100 rounded-2xl p-6 text-center">
-          <div class="text-4xl font-black text-amber-400 mb-2">Ca+</div>
-          <h3 class="font-bold text-gray-800 mb-2">Agua muy dura</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">
-            Alta concentración de calcio y magnesio. Se nota en las tuberías, las teteras y también en el cuerpo.
-          </p>
+        <div class="problema-card reveal reveal-delay-1">
+          <div class="problema-symbol">Ca²⁺</div>
+          <h3>Agua muy dura</h3>
+          <p>Alta concentración de calcio y magnesio. Lo ves en la cafetera y en la tetera. También ocurre dentro de tu cuerpo.</p>
         </div>
-
-        <div class="card bg-orange-50 border border-orange-100 rounded-2xl p-6 text-center">
-          <div class="text-4xl font-black text-orange-400 mb-2">pH</div>
-          <h3 class="font-bold text-gray-800 mb-2">pH desequilibrado</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">
-            El agua de red suele ser ligeramente ácida o neutra. El cuerpo humano necesita un entorno ligeramente alcalino para funcionar bien.
-          </p>
+        <div class="problema-card reveal reveal-delay-2">
+          <div class="problema-symbol">pH</div>
+          <h3>pH desequilibrado</h3>
+          <p>El agua de red es ligeramente ácida o neutra. El organismo funciona mejor en un entorno levemente alcalino.</p>
         </div>
-
       </div>
-
-      <p class="text-center text-gray-400 text-sm">
-        La solución de muchos es comprar agua embotellada. Es cara, genera plástico y no es tan buena como parece.
+      <p class="reveal reveal-delay-3" style="margin-top:36px; font-size:0.83rem; color:var(--text-muted); text-align:center;">
+        La solución de muchos es comprar garrafas. Es cara, genera plástico y no es tan buena como parece.
       </p>
     </div>
   </section>
 
+  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" style="background:var(--cream-light)">
+    <path fill="var(--teal)" d="M0,30 C360,0 720,60 1080,30 C1260,15 1380,40 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
 
-  <!-- ===================== OSMOSIS NO ===================== -->
-  <section class="py-20 px-6 bg-agua-50">
-    <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl md:text-4xl font-bold text-agua-900 mb-4">
-          La ósmosis no es la respuesta
-        </h2>
-        <p class="text-gray-500 text-lg leading-relaxed">
-          Muchos dan el salto a la ósmosis inversa pensando que han resuelto el problema. Pero tiene una trampa grande.
-        </p>
+  <!-- OSMOSIS -->
+  <section class="section osmosis">
+    <div class="container">
+      <p class="section-label reveal">La trampa habitual</p>
+      <h2 class="reveal reveal-delay-1">La ósmosis no es<br />la respuesta</h2>
+      <p class="osmosis-lead reveal reveal-delay-2">Muchos dan el salto a la ósmosis pensando que han resuelto el problema. Tiene una trampa grande.</p>
+
+      <div class="osmosis-grid reveal reveal-delay-2">
+        <div class="osmosis-col bad">
+          <div class="osmosis-col-label">Osmosis inversa</div>
+          <ul class="osmosis-list">
+            <li><span>✗</span>Elimina el cloro — bien hasta aquí</li>
+            <li><span>✗</span>Pero también elimina todos los minerales esenciales: calcio, magnesio, potasio</li>
+            <li><span>✗</span>El resultado es agua "muerta" — limpia de todo, incluyendo lo bueno</li>
+            <li><span>✗</span>pH muy bajo (ácido), que puede desmineralizar el organismo con el tiempo</li>
+            <li><span>✗</span>Genera mucha agua de desecho en el proceso de filtrado</li>
+          </ul>
+        </div>
+        <div class="osmosis-col good">
+          <div class="osmosis-col-label">Ionización alcalina</div>
+          <ul class="osmosis-list">
+            <li><span>✓</span>Filtra el cloro, sedimentos y sustancias nocivas</li>
+            <li><span>✓</span>Conserva los minerales naturales del agua</li>
+            <li><span>✓</span>Eleva el pH a niveles alcalinos (8.5–9.5) favorables para el cuerpo</li>
+            <li><span>✓</span>Genera hidrógeno molecular (H₂), uno de los antioxidantes más estudiados</li>
+            <li><span>✓</span>Agua ilimitada directamente del grifo — sin plásticos, sin garrafas</li>
+          </ul>
+        </div>
       </div>
 
-      <div class="bg-white rounded-2xl border border-agua-100 p-8 shadow-sm mb-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <p class="reveal reveal-delay-3" style="margin-top:32px; font-size:0.8rem; color:rgba(240,233,216,0.3); text-align:center; max-width:480px; margin-left:auto; margin-right:auto; line-height:1.75;">
+        El proceso se llama electrólisis. El agua pasa por placas de titanio y platino que separan las partículas ácidas de las alcalinas. El resultado es agua limpia, mineralizada y rica en hidrógeno.
+      </p>
+    </div>
+  </section>
 
+  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" style="background:var(--teal)">
+    <path fill="var(--cream)" d="M0,20 C480,60 960,0 1440,40 L1440,60 L0,60 Z"/>
+  </svg>
+
+  <!-- BENEFICIOS -->
+  <section class="section beneficios">
+    <div class="container">
+      <p class="section-label reveal">Lo que nota tu cuerpo</p>
+      <h2 class="reveal reveal-delay-1">Más que quitar<br />la sed</h2>
+      <p class="beneficios-lead reveal reveal-delay-2">Lo que reportan las personas que llevan meses bebiendo agua alcalina ionizada.</p>
+
+      <div class="beneficios-grid">
+        <div class="beneficio-item reveal">
+          <div class="beneficio-num">01</div>
           <div>
-            <p class="tag mb-3">Osmosis inversa</p>
-            <ul class="space-y-3 text-sm text-gray-600">
-              <li class="flex items-start gap-2">
-                <span class="text-red-400 font-bold mt-0.5">✗</span>
-                Elimina el cloro — bien
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-red-400 font-bold mt-0.5">✗</span>
-                Pero también elimina todos los minerales esenciales: calcio, magnesio, potasio
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-red-400 font-bold mt-0.5">✗</span>
-                El resultado es agua "muerta" — limpia de todo, incluido lo bueno
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-red-400 font-bold mt-0.5">✗</span>
-                pH muy bajo (ácido), que puede desmineralizar el organismo con el tiempo
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-red-400 font-bold mt-0.5">✗</span>
-                Genera mucha agua de desecho durante el proceso
-              </li>
-            </ul>
+            <h3>Mejor hidratación celular</h3>
+            <p>Las moléculas de agua ionizada penetran mejor en las células. Bebes menos y te hidratas más. Muchos atletas lo notan en la recuperación.</p>
           </div>
-
+        </div>
+        <div class="beneficio-item reveal reveal-delay-1">
+          <div class="beneficio-num">02</div>
           <div>
-            <p class="tag mb-3">Ionización alcalina</p>
-            <ul class="space-y-3 text-sm text-gray-600">
-              <li class="flex items-start gap-2">
-                <span class="text-green-500 font-bold mt-0.5">✓</span>
-                Filtra el cloro, sedimentos y sustancias nocivas
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-green-500 font-bold mt-0.5">✓</span>
-                Conserva los minerales naturales del agua
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-green-500 font-bold mt-0.5">✓</span>
-                Eleva el pH a niveles alcalinos (8.5–9.5) favorables para el cuerpo
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-green-500 font-bold mt-0.5">✓</span>
-                Genera hidrógeno molecular (H2), uno de los antioxidantes más potentes que existen
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-green-500 font-bold mt-0.5">✓</span>
-                Agua ilimitada directamente del grifo, sin plásticos
-              </li>
-            </ul>
+            <h3>Antioxidante natural</h3>
+            <p>El hidrógeno molecular (H₂) ayuda a neutralizar radicales libres y reducir el estrés oxidativo — vinculado al envejecimiento celular prematuro.</p>
           </div>
-
         </div>
-      </div>
-
-      <p class="text-center text-gray-500 text-sm leading-relaxed max-w-xl mx-auto">
-        El proceso se llama electrólisis. El agua pasa por placas de titanio y platino que separan las partículas ácidas de las alcalinas.
-        El resultado es agua limpia, rica en minerales y cargada de hidrógeno molecular.
-      </p>
-    </div>
-  </section>
-
-
-  <!-- ===================== BENEFICIOS ===================== -->
-  <section class="py-20 px-6 bg-white">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold text-agua-900 text-center mb-4">
-        Lo que nota tu cuerpo
-      </h2>
-      <p class="text-center text-gray-500 mb-14 text-lg">Lo que reportan las personas que llevan meses bebiendo agua alcalina ionizada.</p>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-        <div class="card bg-agua-50 rounded-2xl p-7 border border-agua-100">
-          <h3 class="text-base font-bold text-agua-900 mb-2">Mejor hidratación</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">
-            Las moléculas de agua ionizada penetran mejor en las células. Bebes menos cantidad y te hidratas más.
-            Muchos atletas lo notan especialmente en la recuperación post-entreno.
-          </p>
+        <div class="beneficio-item reveal reveal-delay-2">
+          <div class="beneficio-num">03</div>
+          <div>
+            <h3>Equilibrio del pH</h3>
+            <p>La dieta moderna tiende a acidificar el organismo. El agua alcalina contrarresta esa acidez y ayuda a mantener el entorno interno equilibrado.</p>
+          </div>
         </div>
-
-        <div class="card bg-agua-50 rounded-2xl p-7 border border-agua-100">
-          <h3 class="text-base font-bold text-agua-900 mb-2">Antioxidante natural</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">
-            El hidrógeno molecular (H2) es uno de los antioxidantes más estudiados. Ayuda a neutralizar
-            radicales libres y a reducir el estrés oxidativo — proceso vinculado al envejecimiento celular.
-          </p>
+        <div class="beneficio-item reveal reveal-delay-3">
+          <div class="beneficio-num">04</div>
+          <div>
+            <h3>Digestión y energía</h3>
+            <p>Muchas personas con problemas digestivos o falta de energía notan mejoras notables en pocas semanas. El agua que bebes afecta a todo el sistema.</p>
+          </div>
         </div>
-
-        <div class="card bg-agua-50 rounded-2xl p-7 border border-agua-100">
-          <h3 class="text-base font-bold text-agua-900 mb-2">Equilibrio del pH</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">
-            La dieta moderna tiende a acidificar el organismo. El agua alcalina ayuda a contrarrestar esa
-            acidez y a mantener un entorno interno más equilibrado.
-          </p>
+        <div class="beneficio-item reveal reveal-delay-4">
+          <div class="beneficio-num">05</div>
+          <div>
+            <h3>Piel e hidratación externa</h3>
+            <p>El sistema también produce agua para la ducha que elimina el cloro y mineraliza. La piel y el cabello lo notan — menos sequedad, menos irritación.</p>
+          </div>
         </div>
-
-        <div class="card bg-agua-50 rounded-2xl p-7 border border-agua-100">
-          <h3 class="text-base font-bold text-agua-900 mb-2">Digestión y energía</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">
-            Muchas personas con problemas digestivos o de energía notan mejoras significativas en pocas semanas.
-            El agua que bebes afecta a todo el sistema digestivo.
-          </p>
+        <div class="beneficio-item reveal reveal-delay-5">
+          <div class="beneficio-num">06</div>
+          <div>
+            <h3>Un dispositivo, cinco aguas</h3>
+            <p>Para beber, cocinar, limpiar, cuidar la piel y desinfectar frutas y verduras. Reemplaza muchos productos del hogar. Sin plástico para siempre.</p>
+          </div>
         </div>
-
-        <div class="card bg-agua-50 rounded-2xl p-7 border border-agua-100">
-          <h3 class="text-base font-bold text-agua-900 mb-2">Piel e hidratación externa</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">
-            El dispositivo también produce agua para la ducha que elimina el cloro y mineraliza el agua.
-            La piel y el cabello lo notan — menos sequedad, menos irritación.
-          </p>
-        </div>
-
-        <div class="card bg-agua-50 rounded-2xl p-7 border border-agua-100">
-          <h3 class="text-base font-bold text-agua-900 mb-2">Una máquina, cinco aguas</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">
-            Agua para beber, para cocinar, para limpiar, para la piel y para desinfectar frutas y verduras.
-            Reemplaza muchos productos del hogar y elimina las garrafas de plástico para siempre.
-          </p>
-        </div>
-
       </div>
     </div>
   </section>
 
+  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" style="background:var(--cream)">
+    <path fill="var(--teal-mid)" d="M0,40 C360,10 720,55 1080,20 C1260,5 1380,45 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
 
-  <!-- ===================== QUIÉNES SOMOS ===================== -->
-  <section class="py-20 px-6 bg-agua-50">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl md:text-4xl font-bold text-agua-900 mb-4">Somos vecinos</h2>
-        <p class="text-gray-500 text-lg leading-relaxed max-w-2xl mx-auto">
-          Vivimos en Tiana. No somos vendedores — somos personas que descubrieron algo que nos cambió la forma de hidratarnos
-          y que nos pareció suficientemente bueno como para contárselo a los de aquí cerca.
-        </p>
+  <!-- NOSOTROS -->
+  <section class="section nosotros">
+    <div class="container">
+      <div class="nosotros-header">
+        <p class="section-label reveal">Quiénes somos</p>
+        <h2 class="reveal reveal-delay-1">Somos vecinos,<br />no vendedores</h2>
+        <p class="reveal reveal-delay-2">Vivimos en Tiana. Descubrimos esto por curiosidad, lo probamos con escepticismo y nos convenció. Nos pareció suficientemente bueno como para contárselo a los de aquí cerca.</p>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-
-        <!-- ALEJANDRO -->
-        <div class="bg-white rounded-2xl p-8 text-center shadow-sm border border-agua-100">
+      <div class="nosotros-grid">
+        <div class="persona-card reveal">
           <!--
-            FOTO ALEJANDRO:
-            Sustituye este bloque por:
-            <img src="URL_O_RUTA_DE_TU_FOTO" alt="Alejandro Martínez" class="w-36 h-36 rounded-full object-cover mx-auto mb-5" />
+            FOTO ALEJANDRO — sustituye por:
+            <div class="persona-photo"><img src="ruta_foto.jpg" alt="Alejandro Martínez" /></div>
           -->
-          <div class="w-36 h-36 rounded-full bg-agua-100 mx-auto mb-5 flex items-center justify-center">
-            <span class="text-agua-500 text-xs font-medium">Foto Alejandro</span>
+          <div class="persona-photo">
+            <span class="persona-photo-placeholder">Foto<br/>Alejandro</span>
           </div>
-          <h3 class="text-xl font-bold text-agua-900 mb-1">Alejandro Martínez</h3>
-          <p class="text-agua-500 text-sm font-medium mb-4">Tiana, Maresme</p>
-          <p class="text-gray-500 text-sm leading-relaxed">
-            Empecé a informarme sobre el agua por un tema de salud personal. Probé el sistema de ionización con cierto
-            escepticismo — y la diferencia fue tan clara que no pude no compartirlo.
-            Si tienes dudas, hablamos sin más.
-          </p>
+          <div>
+            <h3>Alejandro Martínez</h3>
+            <p class="persona-loc">Tiana · Maresme</p>
+          </div>
+          <p>Empecé a informarme sobre el agua por un tema de salud personal. Lo probé con bastante escepticismo — y la diferencia fue lo suficientemente clara como para no poder ignorarla.</p>
         </div>
-
-        <!-- GEMMA -->
-        <div class="bg-white rounded-2xl p-8 text-center shadow-sm border border-agua-100">
+        <div class="persona-card reveal reveal-delay-2">
           <!--
-            FOTO GEMMA:
-            Sustituye este bloque por:
-            <img src="URL_O_RUTA_DE_TU_FOTO" alt="Gemma Oña" class="w-36 h-36 rounded-full object-cover mx-auto mb-5" />
+            FOTO GEMMA — sustituye por:
+            <div class="persona-photo"><img src="ruta_foto.jpg" alt="Gemma Oña" /></div>
           -->
-          <div class="w-36 h-36 rounded-full bg-agua-100 mx-auto mb-5 flex items-center justify-center">
-            <span class="text-agua-500 text-xs font-medium">Foto Gemma</span>
+          <div class="persona-photo">
+            <span class="persona-photo-placeholder">Foto<br/>Gemma</span>
           </div>
-          <h3 class="text-xl font-bold text-agua-900 mb-1">Gemma Oña</h3>
-          <p class="text-agua-500 text-sm font-medium mb-4">Tiana, Maresme</p>
-          <p class="text-gray-500 text-sm leading-relaxed">
-            Siempre he prestado atención a la alimentación y los hábitos. El agua es la base de todo
-            y muchas veces la más descuidada. Desde que cambiamos la nuestra, no hemos vuelto atrás.
-          </p>
+          <div>
+            <h3>Gemma Oña</h3>
+            <p class="persona-loc">Tiana · Maresme</p>
+          </div>
+          <p>Siempre he prestado atención a la alimentación y los hábitos. El agua es la base de todo y muchas veces la más descuidada. Desde que cambiamos la nuestra, no hemos vuelto atrás.</p>
         </div>
-
       </div>
     </div>
   </section>
 
+  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" style="background:var(--teal-mid)">
+    <path fill="var(--cream-light)" d="M0,30 C480,60 960,0 1440,40 L1440,60 L0,60 Z"/>
+  </svg>
 
-  <!-- ===================== CTA / CONTACTO ===================== -->
-  <section id="contacto" class="hero-bg text-white py-24 px-6">
-    <div class="max-w-2xl mx-auto text-center">
-
-      <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">
-        ¿Quieres saber más?<br />Te lo explicamos en persona.
-      </h2>
-
-      <p class="text-agua-100 text-lg leading-relaxed mb-12">
-        Sin presentaciones corporativas ni presión. Una conversación, con vecinos,
-        sobre el agua que bebes en el Maresme y si tiene sentido para ti hacer el cambio.
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto">
+    <div class="contacto-inner">
+      <div class="divider reveal"></div>
+      <p class="section-label reveal reveal-delay-1">Dar el primer paso</p>
+      <h2 class="reveal reveal-delay-2">Cuéntanos<br /><em>tu situación</em></h2>
+      <p class="contacto-lead reveal reveal-delay-3">
+        Una conversación sin compromiso y sin presión. Te explicamos todo, resolvemos tus dudas — y si no es para ti, sin problema.
       </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-
+      <div class="contacto-buttons reveal reveal-delay-4">
         <!--
-          WHATSAPP ALEJANDRO:
-          Sustituye el 34600000000 por tu número real (sin espacios, con prefijo 34).
-          El texto después de ?text= es el mensaje predefinido que recibirás.
+          WHATSAPP: sustituye 34600000000 y 34611111111 por los números reales (sin espacios, con prefijo 34)
         -->
-        <a
-          href="https://wa.me/34600000000?text=Hola%20Alejandro%2C%20he%20visto%20vuestra%20p%C3%A1gina%20sobre%20el%20agua%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s."
-          target="_blank"
-          class="wa-btn inline-flex items-center justify-center gap-3 text-white font-semibold text-lg px-8 py-4 rounded-full shadow-lg"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
-          WhatsApp Alejandro
+        <a href="https://wa.me/34600000000?text=Hola%20Alejandro%2C%20he%20visto%20vuestra%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20el%20agua." target="_blank" class="btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Alejandro
         </a>
-
-        <!--
-          WHATSAPP GEMMA:
-          Sustituye el 34611111111 por el número real de Gemma.
-        -->
-        <a
-          href="https://wa.me/34611111111?text=Hola%20Gemma%2C%20he%20visto%20vuestra%20p%C3%A1gina%20sobre%20el%20agua%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s."
-          target="_blank"
-          class="wa-btn inline-flex items-center justify-center gap-3 text-white font-semibold text-lg px-8 py-4 rounded-full shadow-lg"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
-          WhatsApp Gemma
+        <a href="https://wa.me/34611111111?text=Hola%20Gemma%2C%20he%20visto%20vuestra%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20el%20agua." target="_blank" class="btn-wa alt">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Gemma
         </a>
-
       </div>
-
-      <p class="text-agua-300 text-sm">
+      <p class="contacto-phones reveal reveal-delay-5">
         O llámanos directamente:
-        <!-- TELÉFONOS: sustituye los números -->
-        <span class="text-white font-semibold">Alejandro: +34 600 000 000</span>
-        &nbsp;·&nbsp;
-        <span class="text-white font-semibold">Gemma: +34 611 111 111</span>
+        <strong>Alejandro +34 600 000 000</strong> · <strong>Gemma +34 611 111 111</strong>
       </p>
-
     </div>
   </section>
 
-
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="bg-agua-900 text-agua-400 py-8 px-6 text-center text-sm">
-    <p class="text-agua-300 font-medium">Alejandro Martínez &amp; Gemma Oña</p>
-    <p class="mt-1">Distribuidores independientes · Tiana, Maresme</p>
+  <footer>
+    <p><strong>Alejandro Martínez &amp; Gemma Oña</strong> &nbsp;·&nbsp; Distribuidores independientes &nbsp;·&nbsp; Tiana, Maresme</p>
   </footer>
+
+  <script>
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    // Hero visible on load
+    document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.classList.add('visible'), 80));
+  </script>
 
 </body>
 </html>
