@@ -334,8 +334,9 @@
       margin-bottom: 16px;
     }
     .nosotros-header p { color: rgba(240,233,216,0.55); font-size: 0.98rem; max-width: 500px; }
-    .nosotros-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    @media (max-width: 620px) { .nosotros-grid { grid-template-columns: 1fr; } }
+    .nosotros-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 860px) { .nosotros-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .nosotros-grid { grid-template-columns: 1fr; } }
     .persona-card {
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(141,181,165,0.15);
@@ -638,6 +639,21 @@
             <p class="persona-loc">Tiana · Maresme</p>
           </div>
           <p>Siempre he prestado atención a la alimentación y los hábitos. El agua es la base de todo y muchas veces la más descuidada. Desde que cambiamos la nuestra, no hemos vuelto atrás.</p>
+        </div>
+
+        <div class="persona-card reveal reveal-delay-3">
+          <!--
+            FOTO ROCÍO — sustituye por:
+            <div class="persona-photo"><img src="ruta_foto.jpg" alt="Rocío López Ridolfo" /></div>
+          -->
+          <div class="persona-photo">
+            <span class="persona-photo-placeholder">Foto<br/>Rocío</span>
+          </div>
+          <div>
+            <h3>Rocío López Ridolfo</h3>
+            <p class="persona-loc">Maresme</p>
+          </div>
+          <p>Me acerqué al agua alcalina con mucha curiosidad y pocas expectativas. Lo que encontré fue una diferencia real en cómo me siento. Ahora me gusta compartirlo con quien quiera escuchar.</p>
         </div>
       </div>
     </div>
