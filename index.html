@@ -645,6 +645,74 @@
     }
     .contacto-phones strong { color: var(--navy); font-weight: 700; }
 
+    /* ── 5 AGUAS ── */
+    .cinco-aguas { background: var(--beige); }
+    .cinco-aguas h2 {
+      font-family: var(--font-brand);
+      font-weight: 500;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+    .cinco-aguas-lead {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+    .aguas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+    .agua-card {
+      background: var(--white);
+      padding: 2rem 1.75rem;
+      transition: background 0.2s;
+    }
+    .agua-card:hover { background: var(--mint-pale); }
+    .agua-ph {
+      font-family: var(--font-brand);
+      font-weight: 300;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      display: block;
+      font-style: italic;
+    }
+    .agua-card h3 {
+      font-family: var(--font-brand);
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+    .agua-card p {
+      font-family: var(--font-body);
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+    .agua-usos {
+      margin-top: 0.75rem;
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      opacity: 0.5;
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--navy-deep);
@@ -683,23 +751,23 @@
       </svg>
     </div>
 
-    <p class="hero-location reveal d1">Vecinos del Maresme</p>
+    <p class="hero-location reveal d1">Tecnología japonesa · Maresme</p>
 
     <h1 class="reveal d2">
-      ¿Sabes lo que<br />
-      <span>realmente</span> bebes?
+      Cambia tu agua,<br />
+      <span>cambia tu vida</span>
     </h1>
 
     <p class="hero-sub reveal d3">
-      El agua del grifo en el Maresme llega con cloro, metales y un pH que no le hace ningún favor a tu cuerpo.
-      Somos Alejandro, Gemma y Rocío, vivimos en Tiana, y encontramos una solución que cambia todo eso.
+      No toda el agua es igual. Lo que bebes cada día afecta tu digestión, tu energía, tu piel y cómo envejeces.
+      Somos Alejandro, Gemma y Rocío — nos mudamos a Tiana y encontramos algo que queríamos compartir con los de aquí.
     </p>
 
     <a href="#contacto" class="hero-cta reveal d4">
       Habla con nosotros
       <svg viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
-    <p class="hero-footnote reveal d5">Sin compromiso · Solo una conversación entre vecinos</p>
+    <p class="hero-footnote reveal d5">Vecinos de Tiana · Sin compromiso · Solo una conversación</p>
   </section>
 
   <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 56" style="background:var(--navy-deep)">
@@ -711,28 +779,28 @@
   <section class="section problema">
     <div class="container">
       <div class="problema-intro">
-        <span class="eyebrow reveal">El agua del grifo</span>
-        <h2 class="reveal d1">El agua del Maresme tiene un problema</h2>
-        <p class="reveal d2">No es peligrosa, cumple normativa. Pero eso no significa que sea buena para tu cuerpo.</p>
+        <span class="eyebrow reveal">Porque no toda el agua es igual</span>
+        <h2 class="reveal d1">El agua del Maresme cumple la normativa. Tu cuerpo necesita más.</h2>
+        <p class="reveal d2">Bebes agua varias veces al día, cada día. ¿Cuántas veces has pensado si esa agua está haciendo algo por ti — o simplemente pasando?</p>
       </div>
       <div class="problema-grid">
         <div class="problema-card reveal">
           <div class="problema-symbol">Cl</div>
           <h3>Cloro residual</h3>
-          <p>Se añade para desinfectar, pero llega a tu vaso. Altera el sabor, el olor y la microbiota intestinal con el tiempo.</p>
+          <p>Se añade para desinfectar, pero llega a tu vaso. Con el tiempo, daña la microbiota intestinal — la base de tu sistema inmune y tu digestión.</p>
         </div>
         <div class="problema-card reveal d1">
           <div class="problema-symbol">Ca²⁺</div>
           <h3>Agua muy dura</h3>
-          <p>Alta concentración de calcio y magnesio. Lo ves en la cafetera y la tetera. También ocurre dentro de tu cuerpo.</p>
+          <p>Alta concentración de calcio y magnesio en forma no asimilable. Lo ves en la cafetera. También pasa dentro de tus arterias, tus riñones y tus articulaciones.</p>
         </div>
         <div class="problema-card reveal d2">
           <div class="problema-symbol">pH</div>
           <h3>pH desequilibrado</h3>
-          <p>El agua de red es ligeramente ácida o neutra. El organismo funciona mejor en un entorno levemente alcalino.</p>
+          <p>El agua de red es ácida o neutra. La dieta moderna ya acidifica el organismo — y el agua que bebes suma o resta. La diferencia se acumula con los años.</p>
         </div>
       </div>
-      <p class="problema-note reveal d3">La solución de muchos es comprar garrafas. Es cara, genera plástico y no es tan buena como parece.</p>
+      <p class="problema-note reveal d3">Muchos dan el salto a la ósmosis creyendo que han resuelto el problema. Hay algo importante que no les han contado.</p>
     </div>
   </section>
 
@@ -744,9 +812,9 @@
   <!-- ── OSMOSIS ── -->
   <section class="section osmosis">
     <div class="container">
-      <span class="eyebrow eyebrow--mint-muted reveal">La trampa habitual</span>
-      <h2 class="reveal d1">La ósmosis no es<br />la respuesta</h2>
-      <p class="osmosis-lead reveal d2">Muchos dan el salto a la ósmosis pensando que han resuelto el problema. Tiene una trampa grande.</p>
+      <span class="eyebrow eyebrow--mint-muted reveal">Si tienes ósmosis, esto te interesa</span>
+      <h2 class="reveal d1">Filtrar no es lo mismo<br />que transformar</h2>
+      <p class="osmosis-lead reveal d2">La ósmosis inversa elimina el cloro. Hasta ahí bien. Pero también elimina todo lo demás — y eso tiene un coste silencioso para tu cuerpo que pocos mencionan.</p>
 
       <div class="osmosis-grid reveal d2">
         <div class="osmosis-col bad">
@@ -754,23 +822,23 @@
           <ul class="osmosis-list">
             <li><span class="dot">✗</span>Elimina el cloro — bien hasta aquí</li>
             <li><span class="dot">✗</span>Pero también elimina todos los minerales esenciales: calcio, magnesio, potasio</li>
-            <li><span class="dot">✗</span>El resultado es agua "muerta" — limpia de todo, incluyendo lo bueno</li>
-            <li><span class="dot">✗</span>pH muy bajo (ácido), que puede desmineralizar el organismo con el tiempo</li>
-            <li><span class="dot">✗</span>Genera mucha agua de desecho en el proceso de filtrado</li>
+            <li><span class="dot">✗</span>Resultado: agua "muerta" — limpia de todo, incluyendo lo que tu cuerpo necesita</li>
+            <li><span class="dot">✗</span>pH muy ácido — puede desmineralizar el organismo con el uso continuado</li>
+            <li><span class="dot">✗</span>Genera hasta 3 litros de agua de desecho por cada litro filtrado</li>
           </ul>
         </div>
         <div class="osmosis-col good">
-          <span class="col-label">Ionización alcalina</span>
+          <span class="col-label">Ionización alcalina japonesa</span>
           <ul class="osmosis-list">
-            <li><span class="dot">✓</span>Filtra el cloro, sedimentos y sustancias nocivas</li>
-            <li><span class="dot">✓</span>Conserva los minerales naturales del agua</li>
-            <li><span class="dot">✓</span>Eleva el pH a niveles alcalinos (8.5–9.5) favorables para el cuerpo</li>
-            <li><span class="dot">✓</span>Genera hidrógeno molecular (H₂), uno de los antioxidantes más estudiados</li>
-            <li><span class="dot">✓</span>Agua ilimitada directamente del grifo — sin plásticos, sin garrafas</li>
+            <li><span class="dot">✓</span>Filtra cloro, sedimentos y sustancias nocivas</li>
+            <li><span class="dot">✓</span>Conserva y potencia los minerales naturales del agua</li>
+            <li><span class="dot">✓</span>Eleva el pH a niveles alcalinos (8.5–9.5) que el cuerpo agradece</li>
+            <li><span class="dot">✓</span>Genera hidrógeno molecular (H₂) — uno de los antioxidantes más potentes conocidos</li>
+            <li><span class="dot">✓</span>Agua ilimitada directamente del grifo — sin plástico, para siempre</li>
           </ul>
         </div>
       </div>
-      <p class="osmosis-note reveal d3">El proceso se llama electrólisis. El agua pasa por placas de titanio y platino que separan las partículas ácidas de las alcalinas. El resultado es agua limpia, mineralizada y rica en hidrógeno.</p>
+      <p class="osmosis-note reveal d3">La tecnología se llama electrólisis. Desarrollada en Japón y certificada como aparato médico. El agua pasa por placas de titanio y platino que la transforman — no solo la limpian.</p>
     </div>
   </section>
 
@@ -782,51 +850,51 @@
   <!-- ── BENEFICIOS ── -->
   <section class="section beneficios">
     <div class="container">
-      <span class="eyebrow reveal">Lo que nota tu cuerpo</span>
-      <h2 class="reveal d1">Más que quitar<br />la sed</h2>
-      <p class="beneficios-lead reveal d2">Lo que reportan las personas que llevan meses bebiendo agua alcalina ionizada.</p>
+      <span class="eyebrow reveal">Lo que nota el cuerpo</span>
+      <h2 class="reveal d1">Agua que trabaja<br />por tu salud</h2>
+      <p class="beneficios-lead reveal d2">Descubre cómo la calidad del agua impacta en tu energía, tu digestión, tu piel y tu longevidad. Esto es lo que reportan quienes llevan meses con agua alcalina ionizada.</p>
 
       <div class="beneficios-grid">
         <div class="beneficio reveal">
           <div class="beneficio-num">01</div>
           <div>
-            <h3>Mejor hidratación celular</h3>
-            <p>Las moléculas de agua ionizada penetran mejor en las células. Bebes menos y te hidratas más. Muchos atletas lo notan en la recuperación.</p>
+            <h3>Hidratación profunda</h3>
+            <p>Las moléculas de agua ionizada son más pequeñas y penetran mejor en las células. Bebes menos, te hidratas más — y el cuerpo lo nota antes de lo que imaginas.</p>
           </div>
         </div>
         <div class="beneficio reveal d1">
           <div class="beneficio-num">02</div>
           <div>
-            <h3>Antioxidante natural</h3>
-            <p>El hidrógeno molecular (H₂) ayuda a neutralizar radicales libres y reducir el estrés oxidativo — vinculado al envejecimiento celular prematuro.</p>
+            <h3>El antioxidante más potente que conocemos</h3>
+            <p>El hidrógeno molecular (H₂) que genera el proceso va directo al interior de las células. Menos inflamación, menos estrés oxidativo, menos envejecimiento prematuro.</p>
           </div>
         </div>
         <div class="beneficio reveal d2">
           <div class="beneficio-num">03</div>
           <div>
-            <h3>Equilibrio del pH</h3>
-            <p>La dieta moderna tiende a acidificar el organismo. El agua alcalina contrarresta esa acidez y mantiene el entorno interno equilibrado.</p>
+            <h3>Equilibrio que tu cuerpo agradece</h3>
+            <p>Azúcar, procesados, alcohol, estrés — todo acidifica el organismo. El agua alcalina actúa como contrapeso natural y mantiene el equilibrio que necesitas para funcionar bien.</p>
           </div>
         </div>
         <div class="beneficio reveal d3">
           <div class="beneficio-num">04</div>
           <div>
             <h3>Digestión y energía</h3>
-            <p>Muchas personas con problemas digestivos o falta de energía notan mejoras notables en pocas semanas. El agua que bebes afecta a todo el sistema.</p>
+            <p>Hinchazón, digestión pesada, cansancio crónico — muchas personas notan diferencias en pocas semanas. El agua que bebes afecta todo el sistema digestivo, y el digestivo afecta todo lo demás.</p>
           </div>
         </div>
         <div class="beneficio reveal d4">
           <div class="beneficio-num">05</div>
           <div>
-            <h3>Piel e hidratación externa</h3>
-            <p>El sistema también produce agua para la ducha que elimina el cloro y mineraliza. La piel y el cabello lo notan — menos sequedad, menos irritación.</p>
+            <h3>Piel, pelo y ducha sin cloro</h3>
+            <p>El sistema purifica también el agua de la ducha. Sin cloro en contacto directo con tu piel y tu cuero cabelludo — menos sequedad, menos irritación, pelo con más vida.</p>
           </div>
         </div>
         <div class="beneficio reveal d5">
           <div class="beneficio-num">06</div>
           <div>
-            <h3>Un dispositivo, cinco aguas</h3>
-            <p>Para beber, cocinar, limpiar, cuidar la piel y desinfectar frutas y verduras. Reemplaza muchos productos del hogar. Sin plástico para siempre.</p>
+            <h3>Un dispositivo, cinco aguas distintas</h3>
+            <p>Para beber, cocinar, cuidar la piel, limpiar y desinfectar. Cada tipo de agua tiene un uso específico. Lo verás en la siguiente sección.</p>
           </div>
         </div>
       </div>
@@ -834,6 +902,53 @@
   </section>
 
   <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 56" style="background:var(--mint)">
+    <path fill="var(--beige)" d="M0,36 C360,8 720,52 1080,18 C1260,4 1380,44 1440,28 L1440,56 L0,56 Z"/>
+  </svg>
+
+
+  <!-- ── 5 AGUAS ── -->
+  <section class="section cinco-aguas">
+    <div class="container">
+      <span class="eyebrow reveal">Un dispositivo. Cinco usos.</span>
+      <h2 class="reveal d1">Convierte el agua de tu grifo<br />en una fuente de salud</h2>
+      <p class="cinco-aguas-lead reveal d2">No es solo agua para beber. La tecnología de ionización produce cinco tipos distintos, cada uno con propiedades específicas para el cuerpo y el hogar.</p>
+
+      <div class="aguas-grid">
+        <div class="agua-card reveal">
+          <span class="agua-ph">pH 8.5 – 9.5</span>
+          <h3>Agua alcalina ionizada</h3>
+          <p>La principal. Para beber y cocinar de forma saludable. Potencia el sabor de los alimentos y el riego de plantas. La que transforma la hidratación diaria.</p>
+          <p class="agua-usos">Beber · Cocinar · Plantas</p>
+        </div>
+        <div class="agua-card reveal d1">
+          <span class="agua-ph">pH 7</span>
+          <h3>Agua neutra</h3>
+          <p>Agua pura y limpia sin alterar el pH. Ideal para bebés, niños pequeños y para tomar medicamentos sin interferencias.</p>
+          <p class="agua-usos">Bebés · Medicamentos</p>
+        </div>
+        <div class="agua-card reveal d2">
+          <span class="agua-ph">pH 4 – 6</span>
+          <h3>Agua cosmética</h3>
+          <p>Propiedades astringentes naturales. Ideal para el lavado de cara, cuidado del cabello, mascotas y conservación de alimentos congelados. Sin productos químicos.</p>
+          <p class="agua-usos">Piel · Cabello · Mascotas · Cristales</p>
+        </div>
+        <div class="agua-card reveal d3">
+          <span class="agua-ph">pH 11.5</span>
+          <h3>Agua alcalina fuerte</h3>
+          <p>Limpieza profunda sin detergentes. Elimina grasa, pesticidas y residuos de frutas y verduras. También para manchas difíciles y superficies del hogar.</p>
+          <p class="agua-usos">Limpieza · Verduras · Manchas</p>
+        </div>
+        <div class="agua-card reveal d4">
+          <span class="agua-ph">pH 2.5</span>
+          <h3>Agua ácida fuerte</h3>
+          <p>Propiedades desinfectantes y depurativas. Para higienizar superficies, reducir gérmenes y cuidado de heridas leves. Sin lejía ni productos agresivos.</p>
+          <p class="agua-usos">Desinfección · Higiene · Gérmenes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 56" style="background:var(--beige)">
     <path fill="var(--navy-deep)" d="M0,36 C360,8 720,52 1080,18 C1260,4 1380,44 1440,28 L1440,56 L0,56 Z"/>
   </svg>
 
@@ -843,8 +958,8 @@
     <div class="container">
       <div class="nosotros-intro">
         <span class="eyebrow eyebrow--mint-muted reveal">Quiénes somos</span>
-        <h2 class="reveal d1">Somos vecinos,<br />no vendedores</h2>
-        <p class="reveal d2">Vivimos en Tiana. Descubrimos esto por curiosidad, lo probamos con escepticismo y nos convenció. Nos pareció suficientemente bueno como para contárselo a los de aquí cerca. Escríbenos por WhatsApp o llámanos directamente.</p>
+        <h2 class="reveal d1">Llegamos a Tiana.<br />Y queríamos compartirlo.</h2>
+        <p class="reveal d2">Nos mudamos al Maresme y empezamos a prestar atención a lo que comíamos, lo que respirábamos y lo que bebíamos. El agua fue la sorpresa más grande. Lo probamos con escepticismo — y la diferencia fue tan clara que sentimos que había que contárselo a los de aquí cerca. Escríbenos por WhatsApp cuando quieras.</p>
       </div>
 
       <div class="personas-grid">
@@ -861,7 +976,7 @@
             <p class="persona-name">Alejandro Martínez</p>
             <p class="persona-loc">Tiana · Maresme</p>
           </div>
-          <p>Empecé a informarme sobre el agua por un tema de salud personal. Lo probé con bastante escepticismo — y la diferencia fue lo suficientemente clara como para no poder ignorarla.</p>
+          <p>Me informé sobre el agua por un problema de salud personal. Entré con escepticismo — y salí convencido. No es fe, es que el cuerpo habla.</p>
         </div>
 
         <div class="persona-card reveal d2">
@@ -876,7 +991,7 @@
             <p class="persona-name">Gemma Oña</p>
             <p class="persona-loc">Tiana · Maresme</p>
           </div>
-          <p>Siempre he prestado atención a la alimentación y los hábitos. El agua es la base de todo y muchas veces la más descuidada. Desde que cambiamos la nuestra, no hemos vuelto atrás.</p>
+          <p>Cuido mucho lo que como. Tardé en darme cuenta de que descuidaba lo que bebía. Desde que cambiamos el agua en casa, hay cosas que simplemente ya no volvieron.</p>
         </div>
 
         <div class="persona-card reveal d4">
@@ -907,12 +1022,12 @@
   <section class="section contacto" id="contacto">
     <div class="contacto-inner">
       <div class="divider-line reveal"></div>
-      <span class="eyebrow reveal d1">Dar el primer paso</span>
+      <span class="eyebrow reveal d1">El primer paso</span>
       <h2 class="reveal d2">
-        Cuéntanos<br /><em>tu situación</em>
+        No se trata solo de<br /><em>beber agua.</em>
       </h2>
       <p class="contacto-lead reveal d3">
-        Una conversación sin compromiso y sin presión. Te explicamos todo, resolvemos tus dudas — y si no es para ti, sin problema.
+        Sino de elegir la correcta. Cuéntanos tu situación — hábitos, salud, curiosidades. Sin presión, sin ventas. Solo una conversación entre vecinos.
       </p>
 
       <div class="contacto-btns reveal d4">
