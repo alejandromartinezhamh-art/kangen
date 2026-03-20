@@ -713,6 +713,165 @@
       opacity: 0.5;
     }
 
+    /* ── MAQUINAS ── */
+    .maquinas { background: var(--navy); }
+    .maquinas h2 {
+      font-family: var(--font-brand);
+      font-weight: 500;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      color: var(--mint-light);
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+    .maquinas-lead {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: rgba(200,221,216,0.5);
+      max-width: 500px;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+    .maquinas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    .maquina-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200,221,216,0.12);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: background 0.25s, border-color 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .maquina-card:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(200,221,216,0.25);
+    }
+    .maquina-card.featured {
+      border-color: rgba(200,221,216,0.3);
+      background: rgba(200,221,216,0.06);
+    }
+    .maquina-photo {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: rgba(200,221,216,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(200,221,216,0.08);
+      position: relative;
+    }
+    .maquina-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .maquina-photo-label {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      color: rgba(200,221,216,0.3);
+      font-weight: 500;
+      text-align: center;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .maquina-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--mint);
+      color: var(--navy-deep);
+      font-family: var(--font-ui);
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-full);
+    }
+    .maquina-body {
+      padding: 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .maquina-cat {
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mint);
+      opacity: 0.65;
+    }
+    .maquina-name {
+      font-family: var(--font-brand);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--mint-light);
+      line-height: 1.1;
+    }
+    .maquina-desc {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: rgba(200,221,216,0.55);
+      line-height: 1.75;
+    }
+    .maquina-specs {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(200,221,216,0.1);
+    }
+    .maquina-spec {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+    }
+    .maquina-spec-label {
+      color: rgba(200,221,216,0.35);
+    }
+    .maquina-spec-val {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: rgba(200,221,216,0.75);
+      letter-spacing: 0.05em;
+    }
+    .maquina-precio {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(200,221,216,0.1);
+    }
+    .maquina-precio-desde {
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(200,221,216,0.3);
+      margin-bottom: 0.2rem;
+    }
+    .maquina-precio-num {
+      font-family: var(--font-brand);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--mint-light);
+      line-height: 1;
+    }
+    .maquina-precio-num span {
+      font-size: 0.85rem;
+      color: rgba(200,221,216,0.4);
+      font-weight: 300;
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--navy-deep);
@@ -949,6 +1108,142 @@
   </section>
 
   <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 56" style="background:var(--beige)">
+    <path fill="var(--navy)" d="M0,28 C360,0 720,56 1080,28 C1260,14 1380,42 1440,28 L1440,56 L0,56 Z"/>
+  </svg>
+
+
+  <!-- ── MÁQUINAS ── -->
+  <section class="section maquinas">
+    <div class="container">
+      <span class="eyebrow eyebrow--mint-muted reveal">Tecnología japonesa certificada</span>
+      <h2 class="reveal d1">Nuestra solución</h2>
+      <p class="maquinas-lead reveal d2">Tres dispositivos distintos según lo que necesites. Todos fabricados en Japón, certificados como aparatos médicos y con garantía de 5 años. Se instalan directamente en tu grifo en menos de una hora.</p>
+
+      <div class="maquinas-grid">
+
+        <!-- MÁQUINA 1: K8 -->
+        <div class="maquina-card reveal">
+          <div class="maquina-photo">
+            <!--
+              FOTO K8 — reemplaza por:
+              <img src="foto-k8.jpg" alt="Ionizador K8" />
+            -->
+            <span class="maquina-photo-label">Foto · Ionizador K8</span>
+            <span class="maquina-badge">El más avanzado</span>
+          </div>
+          <div class="maquina-body">
+            <span class="maquina-cat">Para beber y cocinar</span>
+            <p class="maquina-name">Ionizador de 8 placas</p>
+            <p class="maquina-desc">El modelo más potente. Con 8 placas de titanio puro recubiertas de platino, genera el mayor potencial antioxidante del mercado. Panel LCD a color con 10 idiomas. Ideal para quienes buscan la mejor tecnología disponible.</p>
+            <div class="maquina-specs">
+              <div class="maquina-spec">
+                <span class="maquina-spec-label">Placas de electrodo</span>
+                <span class="maquina-spec-val">8 placas Ti/Pt</span>
+              </div>
+              <div class="maquina-spec">
+                <span class="maquina-spec-label">Potencial antioxidante (ORP)</span>
+                <span class="maquina-spec-val">hasta −722 mV</span>
+              </div>
+              <div class="maquina-spec">
+                <span class="maquina-spec-label">Tipos de agua</span>
+                <span class="maquina-spec-val">5 tipos · pH 2.5–11.5</span>
+              </div>
+              <div class="maquina-spec">
+                <span class="maquina-spec-label">Garantía</span>
+                <span class="maquina-spec-val">5 años</span>
+              </div>
+            </div>
+            <div class="maquina-precio">
+              <p class="maquina-precio-desde">Desde</p>
+              <p class="maquina-precio-num">99€ <span>/ mes · o 5.610€ al contado</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MÁQUINA 2: SD501DX -->
+        <div class="maquina-card featured reveal d2">
+          <div class="maquina-photo">
+            <!--
+              FOTO SD501DX — reemplaza por:
+              <img src="foto-sd501dx.jpg" alt="Ionizador SD501DX" />
+            -->
+            <span class="maquina-photo-label">Foto · Ionizador SD501DX</span>
+            <span class="maquina-badge">El más popular</span>
+          </div>
+          <div class="maquina-body">
+            <span class="maquina-cat">Para beber y cocinar · Nuevo diseño 2025</span>
+            <p class="maquina-name">Ionizador de 7 placas</p>
+            <p class="maquina-desc">El modelo más vendido del mundo, renovado en 2025. 7 placas de titanio y platino, panel LCD táctil, compatible con cualquier voltaje para usarlo en cualquier país. El equilibrio perfecto entre rendimiento y precio.</p>
+            <div class="maquina-specs">
+              <div class="maquina-spec">
+                <span class="maquina-spec-label">Placas de electrodo</span>
+                <span class="maquina-spec-val">7 placas Ti/Pt</span>
+              </div>
+              <div class="maquina-spec">
+                <span class="maquina-spec-label">Potencial antioxidante (ORP)</span>
+                <span class="maquina-spec-val">hasta −631 mV</span>
+              </div>
+              <div class="maquina-spec">
+                <span class="maquina-spec-label">Tipos de agua</span>
+                <span class="maquina-spec-val">5 tipos · pH 2.5–11.5</span>
+              </div>
+              <div class="maquina-spec">
+                <span class="maquina-spec-label">Garantía</span>
+                <span class="maquina-spec-val">5 años</span>
+              </div>
+            </div>
+            <div class="maquina-precio">
+              <p class="maquina-precio-desde">Desde</p>
+              <p class="maquina-precio-num">81€ <span>/ mes · o 4.569€ al contado</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MÁQUINA 3: ANESPA DX -->
+        <div class="maquina-card reveal d4">
+          <div class="maquina-photo">
+            <!--
+              FOTO ANESPA DX — reemplaza por:
+              <img src="foto-anespa.jpg" alt="Anespa DX" />
+            -->
+            <span class="maquina-photo-label">Foto · Anespa DX</span>
+          </div>
+          <div class="maquina-body">
+            <span class="maquina-cat">Para la ducha y el baño</span>
+            <p class="maquina-name">Sistema de spa en casa</p>
+            <p class="maquina-desc">Transforma tu ducha. Elimina casi el 100% del cloro del agua que toca tu piel y tu pelo cada día. Añade minerales de aguas termales japonesas. Lo nota la piel, lo nota el cabello. Se combina con el ionizador para una hidratación completa.</p>
+            <div class="maquina-specs">
+              <div class="maquina-spec">
+                <span class="maquina-spec-label">Eliminación de cloro</span>
+                <span class="maquina-spec-val">~100%</span>
+              </div>
+              <div class="maquina-spec">
+                <span class="maquina-spec-label">Minerales</span>
+                <span class="maquina-spec-val">Aguas termales japonesas</span>
+              </div>
+              <div class="maquina-spec">
+                <span class="maquina-spec-label">Cartuchos</span>
+                <span class="maquina-spec-val">Doble filtración</span>
+              </div>
+              <div class="maquina-spec">
+                <span class="maquina-spec-label">Garantía</span>
+                <span class="maquina-spec-val">5 años</span>
+              </div>
+            </div>
+            <div class="maquina-precio">
+              <p class="maquina-precio-desde">Desde</p>
+              <p class="maquina-precio-num">62€ <span>/ mes · o 3.422€ al contado</span></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="osmosis-note reveal d5" style="margin-top:2rem;">Todos los modelos se instalan directamente en tu grifo sin obras. Financiación oficial disponible sin necesidad de entidad bancaria externa. Pregúntanos.</p>
+    </div>
+  </section>
+
+  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 56" style="background:var(--navy)">
     <path fill="var(--navy-deep)" d="M0,36 C360,8 720,52 1080,18 C1260,4 1380,44 1440,28 L1440,56 L0,56 Z"/>
   </svg>
 
